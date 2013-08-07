@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	h5=title
+	div.container(style='margin:20px')
+		
+		table.table.table-bordered.table-striped
+			thead
+				tr
+					th(style='width:50px') Challenge Id
+					th(style='width:50px') Challenger User Name
+					th(style='width:50px') Challenged User Name
+					th(style='width:50px') Accept
+					
+			tbody
+			- for (var i = 0; i < challenge.length; i++)
+				
+					if(user._id!= challenge[i].challanged_user_id && user._id== challenge[i].challanger_user_id && challenge[i].accept == 0)
+						tr
+							td= challenge[i]._id
+							td= challenge[i].challanged_user_name
+							td= challenge[i].challanger_user_name 
+							td= challenge[i].accept 
+							td
+								a(href="/addaccept/?challengedUserId="+challenge[i].challanged_user_id+"&challengerUserId="+challenge[i].challanger_user_id+"&challengeId="+challenge[i]._id)= "Accept Challange"
+								

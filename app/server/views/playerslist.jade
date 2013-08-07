@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	h5=title
+	div.container(style='margin:20px')
+		table.table.table-bordered.table-striped
+			tbody
+			- for (var i = 0; i < accts.length; i++)
+				if(user.name != accts[i].name)
+					tr
+						td= name= accts[i].name
+						td
+							a(href="/addchallenge/?challengedUserId="+user._id+"&challengerUserId="+accts[i]._id+"&challengedUserName="+user.name+"&challengerUserName="+accts[i].name)= "Challange"
+
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap-modal.js')
+	script(src='/vendor/bootstrap-transition.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')
+
+
+					

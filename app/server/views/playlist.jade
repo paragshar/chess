@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	h5=title
+	div.container(style='margin:20px')
+		table.table.table-bordered.table-striped
+			thead
+				tr
+					th(style='width:50px') Sl.no
+					th(style='width:70px') Challenger User Id
+					th(style='width:70px') Challenged User Id
+					th(style='width:70px') Challange Id
+					th(style='width:100px') Grid
+					th(style='width:70px') Last move player Id
+					th(style='width:70px') Last move color
+					th(style='width:70px') X
+					th(style='width:70px') Y
+					th(style='width:70px') X1
+					th(style='width:70px') Y1
+					
+			tbody
+			- for (var i = 0; i < game.length; i++)
+				tr
+					td= i+1
+					td= game[i].player1_id
+					td= game[i].player2_id 
+					td= game[i].challengeId 
+					td= game[i].grid
+					td= game[i].last_move_player_id
+					td= game[i].last_move_color
+					td= game[i].x
+					td= game[i].y
+					td= game[i].x1
+					td= game[i].y1

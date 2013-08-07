@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	div#canvas
+	input(id="is_it_my_turn" , value=is_it_my_turn ,type="hidden")
+	input(id="pgrid" , value=0 ,type="hidden")
+	img(id = "img" ,align:"left",src="/img/game/ChessBoard.jpg",border=0, float= "left", margin-top= "-608px")
+	p#status
+		|Turn is yours
+	div#move
+		|Moves Info
+	div#moves_info
+	div#newPown
+		button(id="rook", onclick="newpown('rook');") Rook
+		button(id="knight", onclick="newpown('knight');") knight
+		button(id="queen", onclick="newpown('queen');") queen
+		button(id="bishop", onclick="newpown('bishop');") bishop
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/js/views/check-is-it-my-turn.js')
+	script(src='/js/views/moves.js')
+	script(src='/js/game/game/chessboard.js')
+	script(src='/js/game/game/pawn.js')
+	script(src='/js/game/game/rook.js')
+	script(src='/js/game/game/king.js')
+	script(src='/js/game/game/queen.js')
+	script(src='/js/game/game/knight.js')
+	script(src='/js/game/game/bishop.js')
+	script(src="/vendor/jquery-ui.js")
+	script(src='/js/game/lib/kinetic.js')

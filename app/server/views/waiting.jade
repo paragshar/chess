@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	img(src="/img/waiting.jpg")
+	input(id="challenge_id", type="hidden", value=challenge_id) 
+
+
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/js/views/waiting.js')
