@@ -3,7 +3,6 @@ var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
 var CM = require('./modules/challenges-manager');
 var GM = require('./modules/game-manager');
-var data;
 var challengeId;
 var request = require("request");
 
@@ -290,6 +289,7 @@ module.exports = function(app) {
 	app.post('/move', function(req, res) {
 		var movement = req.session.user.name +" > move "+req.query["moved_coin"] +" from x is "+ req.query["x"] +" and" +" y is " +req.query["y"] +" to "+"x is " + req.query["x1"] +" and"+ " y is " +req.query["y1"]
 		var userid = req.session.user._id;
+		var data = "";
 		req.on('data', function (grid) {
 			data += grid;
     	});
