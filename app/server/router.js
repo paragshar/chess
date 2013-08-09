@@ -145,7 +145,7 @@ module.exports = function(app) {
 	})
 	app.get('/challenges', function(req, res){
 		CM.getAllChallenges( function(e, challengers){
-			res.render('challenges', { title : 'Challengers List', challenge : challengers});
+			res.render('challenges', { title : 'Challengers List', challenge : challengers, user: req.session.user});
 		})
 	});
 
@@ -262,7 +262,6 @@ module.exports = function(app) {
 	
 	app.get('/playerslist', function(req, res) {
 	    AM.getAllRecords( function(e, accounts){
-	    	console.log(req.session.user);
 			res.render('playerslist', { title : 'Players List', accts : accounts , user: req.session.user});
 		})
 	});
