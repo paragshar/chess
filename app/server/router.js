@@ -262,8 +262,8 @@ module.exports = function(app) {
 	
 	app.get('/playerslist', function(req, res) {
 	    AM.getAllRecords( function(e, accounts){
-	    	console.log(accounts);
-			res.render('playerslist', { title : 'Players List', accts : accounts });
+	    	console.log(req.session.user);
+			res.render('playerslist', { title : 'Players List', accts : accounts , user: req.session.user});
 		})
 	});
 
