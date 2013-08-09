@@ -19,7 +19,6 @@ var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}),
 var games = db.collection('games');
 var moves = db.collection('moves');
 
-
 exports.createNewGame = function(newData, callback)
 {
 	// append date stamp when record was created //

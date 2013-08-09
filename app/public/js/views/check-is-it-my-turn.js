@@ -32,10 +32,10 @@ function isItMyTurn(){
 					newGrid = document.getElementById(tmpGrid);
 					Grid = tmpGrid;
 				}else if(WK == 1 && BK == 0){
-					alert("Game Over White is WINNER")
+					alert("Game Over White is \n WINNER")
 					window.location.href = "/home";
-				}else if(BK == 0 && BK == 1 ){
-					alert("Game Over Black isWINNER")
+				}else if(WK == 0 && BK == 1 ){
+					alert("Game Over Black is \n WINNER")
 					window.location.href = "/home";
 				}
 			}

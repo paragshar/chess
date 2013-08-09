@@ -235,17 +235,16 @@ function dragend(color, x, y, x1, y1, name)
 	is_it_my_turn = 'false';
 	xmlhttp.open("post","/move?moved_pawn_color=" + color + "&x=" + x + "&y=" + y +"&x1=" + x1 +"&y1=" +y1 + "&moved_coin=" + name,true);
 	var trgrid = getTransformedGrid();
-	console.log("JSON data=" + trgrid);
 	xmlhttp.send(trgrid);
 		if (BK == 0 && WK == 0) {
 			document.getElementById('is_it_my_turn').value = 0;
 			document.getElementById('pgrid').value = trgrid;
 		}else if(BK == 1 && WK == 0){
-			alert("Game Over White is WINNER")
+			alert("Game Over White is \n WINNER")
 			document.getElementById('is_it_my_turn').value = 1;
 			window.location.href = "/home";
 		}else if(BK == 0 && WK == 1){
-			alert("Game Over Black is WINNER")
+			alert("Game Over Black is \n WINNER")
 			document.getElementById('is_it_my_turn').value = 1;
 			window.location.href = "/home";
 		}
@@ -315,26 +314,26 @@ function animation (x, y, x1, y1, color) {
 		});
 	}
 
-      layer.add(rect);
-      stage.add(layer);
+		layer.add(rect);
+		stage.add(layer);
 
-      var tween = new Kinetic.Tween({
-        node: rect, 
-        x: x1*cell,
-        y: y1*cell,
-      });
-      
-      setTimeout(function() {
-        tween.play();
-      },500);
+		var tween = new Kinetic.Tween({
+		node: rect, 
+		x: x1*cell,
+		y: y1*cell,
+		});
 
-      setTimeout(function(){
-      	clearlayer()
-      },4000)
+		setTimeout(function() {
+		tween.play();
+		},500);
 
-      function clearlayer(){
-      	layer.remove();
-      }
+		setTimeout(function(){
+			clearlayer()
+		},4000)
+
+		function clearlayer(){
+			layer.remove();
+		}
 }
 
 function createObj (Objname) {
@@ -374,5 +373,5 @@ function createObj (Objname) {
  			Grid[newValX][newValY] = obj;
  			dragend('b', oldValX, oldValY, newValX, newValY, Objname);
  		}
- 	};
- } 
+ 	}
+} 

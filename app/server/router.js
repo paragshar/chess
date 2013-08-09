@@ -291,11 +291,10 @@ module.exports = function(app) {
 		var movement = req.session.user.name +" > move "+req.query["moved_coin"] +" from x is "+ req.query["x"] +" and" +" y is " +req.query["y"] +" to "+"x is " + req.query["x1"] +" and"+ " y is " +req.query["y1"]
 		var userid = user._id
 		req.on('data', function (grid) {
-			data += grid;
+			data = grid;
     	});
     	req.on('end', function () {
             res.end();
-            console.log("data=" + data);
 	        GM.gameUpdate(
 	        	{grid 				: JSON.parse(data),
 	        	 gameId 			: req.session.gameId,
