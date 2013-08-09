@@ -15,7 +15,6 @@ function isItMyTurn(){
 					}
 				WK = 0;
 				BK = 0;
-				// console.log("color="+data[0]["last_move_color"]);
 				animation(data[0]["x"], data[0]["y"], data[0]["x1"], data[0]["y1"], data[0]["last_move_color"])
 				var tmpGrid = new Array();
 				for (var i = 0; i < 8; i++) {

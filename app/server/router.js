@@ -295,8 +295,6 @@ module.exports = function(app) {
     	});
     	req.on('end', function () {
             res.end();
-            console.log(data);
-            console.log(JSON.parse(data));
 	        GM.gameUpdate(
 	        	{grid 				: JSON.parse(data),
 	        	 gameId 			: req.session.gameId,
