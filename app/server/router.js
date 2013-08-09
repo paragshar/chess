@@ -271,7 +271,7 @@ module.exports = function(app) {
 	    var game_id = req.session.gameId;
 	    GM.findById(game_id, function(e, o){
 	    	if(o){
-	    		if(o.player1_id == user._id){
+	    		if(o.player1_id == req.session.user._id){
 	    			res.render('play', {
 	        			title: 'Play',
 	        			is_it_my_turn:1,
@@ -289,7 +289,7 @@ module.exports = function(app) {
 
 	app.post('/move', function(req, res) {
 		var movement = req.session.user.name +" > move "+req.query["moved_coin"] +" from x is "+ req.query["x"] +" and" +" y is " +req.query["y"] +" to "+"x is " + req.query["x1"] +" and"+ " y is " +req.query["y1"]
-		var userid = user._id
+		var userid = req.session.user._id;
 		req.on('data', function (grid) {
 			data = grid;
     	});
