@@ -5,8 +5,9 @@ $(document).on('ready', function(){
 function isItMyTurn(){
 	if($('#is_it_my_turn').val() == 0){
 		var url = '/is_it_my_turn';
-		$.get(url, function(data){
-			if (data != 'no') {
+		$.get(url, function(newData){
+			if (newData.turn != 'no') {
+				var data = newData.turn;
 				document.getElementById('is_it_my_turn').value = 1;
 					if (x2 == 'w') {
 						x2 = 'b'
@@ -38,11 +39,21 @@ function isItMyTurn(){
 					window.location.href = "/home";
 				}
 			}
+			if (newData.moves != 'no') {
+				var data = newData.moves;
+				var moves = new Array();
+				for (var i = 0; i < data.length; i++) {
+					moves[i] = data[i]+'<br/>';
+				}
+				document.getElementById('moves_info').innerHTML = moves.join(" ");
+			};
+
 			if (document.getElementById('is_it_my_turn').value == 1) {
 				document.getElementById('status').innerHTML = 'Turn is yours';
 			}else{
 				document.getElementById('status').innerHTML = 'Turn is not yours';
 			}
+
 		});
 	}
 }

@@ -87,10 +87,14 @@ exports.move = function(newData, callback){
 }
 
 exports.getAllMoves = function(newData, callback){
+	var sendData = new Array();
 	moves.find({gameId : newData.gameId}).toArray(
 		function(e, res) {
 				if (res.length != 0) {
-					callback(res)
+					for (var i = 0; i < res.length; i++) {
+						sendData[i]=res[i]['move']
+					};
+					callback(sendData);
 				}else{
 					callback('no')
 				}

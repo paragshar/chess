@@ -108,12 +108,14 @@ module.exports = function(app) {
 	});
 // for challenges
 	app.get('/addchallenge', function(req, res){
+		var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 		challengeId = CM.addNewChallenge({
 			challanged_user_id 	: req.query["challengedUserId"],
 			challanger_user_id 	: req.query["challengerUserId"],
 			accept				: 0,
 			challanged_user_name: req.query["challengedUserName"],
 			challanger_user_name: req.query["challengerUserName"],
+			date_and_time		: date
 		},function(){
 				res.render('waiting',{'challenge_id':challengeId});
 		});
@@ -128,10 +130,21 @@ module.exports = function(app) {
 
 	app.get('/is_it_my_turn', function(req, res){
 		var userId = req.session.user._id;
+		var turn1 = "";
 		GM.find_turn({gameId: req.session.gameId,
 					userid : userId
 			}, function(turn){
-			res.send(turn);
+				turn1 = turn;
+		})
+
+		GM.getAllMoves({
+			gameId : req.session.gameId
+		}, function(moves_info){
+			newData = {
+			    "moves":moves_info,
+			    "turn":turn1
+			}
+			res.send(newData);
 		})
 	});
 
@@ -287,7 +300,10 @@ module.exports = function(app) {
 	});
 
 	app.post('/move', function(req, res) {
-		var movement = req.session.user.name +" > move "+req.query["moved_coin"] +" from x is "+ req.query["x"] +" and" +" y is " +req.query["y"] +" to "+"x is " + req.query["x1"] +" and"+ " y is " +req.query["y1"]
+		var x = new Array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
+		var pos = req.query["x"];
+		var pos1 = req.query["x1"];
+		var movement = req.session.user.name +" > moved "+req.query["moved_coin"] +" from "+ x[pos]+req.query["y"] +" to "+x[pos1]+req.query["y1"]
 		var userid = req.session.user._id;
 		var data = "";
 		req.on('data', function (grid) {
