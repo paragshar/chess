@@ -107,14 +107,14 @@ module.exports = function(app) {
 		});
 	});
 // for challenges
-	app.get('/addchallenge', function(req, res){
-		var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+	app.post('/addchallenge', function(req, res){
+		var date = new Date().toISOString().replace(/-/, '/').replace(/-/, '/').replace(/T/, ' ').replace(/\..+/, '')
 		challengeId = CM.addNewChallenge({
-			challanged_user_id 	: req.query["challengedUserId"],
-			challanger_user_id 	: req.query["challengerUserId"],
+			challanged_user_id 	: req.body.challengedUserId,
+			challanger_user_id 	: req.body.challengerUserId,
 			accept				: 0,
-			challanged_user_name: req.query["challengedUserName"],
-			challanger_user_name: req.query["challengerUserName"],
+			challanged_user_name: req.body.challengedUserName,
+			challanger_user_name: req.body.challengerUserName,
 			date_and_time		: date
 		},function(){
 				res.render('waiting',{'challenge_id':challengeId});
@@ -303,7 +303,7 @@ module.exports = function(app) {
 		var x = new Array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
 		var pos = req.query["x"];
 		var pos1 = req.query["x1"];
-		var movement = req.session.user.name +" > moved "+req.query["moved_coin"] +" from "+ x[pos]+req.query["y"] +" to "+x[pos1]+req.query["y1"]
+		var movement = req.session.user.user +" > moved "+req.query["moved_coin"] +" from "+ x[pos]+req.query["y"] +" to "+x[pos1]+req.query["y1"]
 		var userid = req.session.user._id;
 		var data = "";
 		req.on('data', function (grid) {

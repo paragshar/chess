@@ -3,14 +3,18 @@ extends layout
 block content
 	h5=title
 	div.container(style='margin:20px')
-		table.table.table-bordered.table-striped
-			tbody
-			- for (var i = 0; i < accts.length; i++)
-				if(user.name != accts[i].name)
-					tr
-						td= name= accts[i].name
-						td
-							a(href="/addchallenge/?challengedUserId="+user._id+"&challengerUserId="+accts[i]._id+"&challengedUserName="+user.name+"&challengerUserName="+accts[i].name)= "Challange"
+		- for (var i = 0; i < accts.length; i++)
+				if(user.user != accts[i].user)
+					form(name="input", action="/addchallenge", method="post")
+						input(type="hidden", name="challengedUserId", value= user._id)
+						input(type="hidden", name="challengerUserId", value= accts[i]._id)
+						input(type="hidden", name="challengedUserName", value= user.user)
+						input(type="hidden", name="challengerUserName", value= accts[i].user)
+						div#Challange
+							div#nameChallange
+								name= accts[i].user
+							div#buttonChallange
+								input(type="submit", value="Challange")
 
 block scripts
 	script(src='/vendor/jquery.min.js')
