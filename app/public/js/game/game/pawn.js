@@ -154,11 +154,11 @@ function pawn (layer, color, x, y, imgSrc, name) {
 					}
 				}else{
 					this.movePawn(this.x, this.y);
-					console.log("move is not correct");
+					alert("move is not correct");
 				}
 			}else{
 				this.movePawn(this.x, this.y);
-				console.log("Turn is not yours");
+         		alert("u cant move other player coins");
 			}
 		}else{
 			alert("Turn is not yours")

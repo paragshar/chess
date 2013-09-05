@@ -58,11 +58,11 @@ function bishop (layer, color, x, y, imgSrc, name) {
                   dragend(x2, oldx, oldy, x1, y1, bishopObj.name);
             }else{
                   this.moveBishop(this.x, this.y);
-                  console.log("move is not correct");
+                  alert("move is not correct");
             }
         }else{
           this.moveBishop(this.x, this.y);
-          console.log("Turn is not yours");
+          alert("u cant move other player coins");
         }
       }else{
         alert("Turn is not yours")

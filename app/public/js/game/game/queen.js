@@ -58,7 +58,7 @@ function queen (layer, color, x, y, imgSrc, name) {
                 dragend(x2, oldx, oldy, x1, y1, queenObj.name);
             }else{
                 this.moveQueen(this.x, this.y);
-                console.log("move is not correct");
+                alert("move is not correct");
             }
         }else{
             this.moveQueen(this.x, this.y);

@@ -108,14 +108,16 @@ module.exports = function(app) {
 	});
 // for challenges
 	app.post('/addchallenge', function(req, res){
-		var date = new Date().toISOString().replace(/-/, '/').replace(/-/, '/').replace(/T/, ' ').replace(/\..+/, '')
+		var currentdate = new Date()
+		currentdate = currentdate.getDay() + "/"+currentdate.getMonth()+ "/" + currentdate.getFullYear() +" "+
+					+ currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 		challengeId = CM.addNewChallenge({
 			challanged_user_id 	: req.body.challengedUserId,
 			challanger_user_id 	: req.body.challengerUserId,
 			accept				: 0,
 			challanged_user_name: req.body.challengedUserName,
 			challanger_user_name: req.body.challengerUserName,
-			date_and_time		: date
+			date_and_time		: currentdate
 		},function(){
 				res.render('waiting',{'challenge_id':challengeId});
 		});
