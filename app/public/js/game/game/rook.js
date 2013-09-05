@@ -64,7 +64,7 @@ function rook (layer, color, x, y, imgSrc, name) {
 				alert("u cant move other player coins");
 			}
       	}else{
-       		alert("Turn is not yours")
+       		alert("Turn is not yours");
        		this.moveRook(this.x, this.y);
       	}
 	}

@@ -62,10 +62,11 @@ function queen (layer, color, x, y, imgSrc, name) {
             }
         }else{
             this.moveQueen(this.x, this.y);
-            console.log("Turn is not yours");
+            alert("u cant move other player coins");
+
         }
       }else{
-        alert("Turn is not yours")
+        alert("Turn is not yours");
         this.moveQueen(this.x, this.y);
       }
     }
