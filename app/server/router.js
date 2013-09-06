@@ -109,8 +109,10 @@ module.exports = function(app) {
 // for challenges
 	app.post('/addchallenge', function(req, res){
 		var currentdate = new Date()
-		currentdate = currentdate.getDay() + "/"+currentdate.getMonth()+ "/" + currentdate.getFullYear() +" "+
+		var month = currentdate.getMonth() + 1
+		currentdate = currentdate.getDate() + "/"+month + "/" + currentdate.getFullYear() +" "+
 					+ currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+		// console.log(currentdate);
 		challengeId = CM.addNewChallenge({
 			challanged_user_id 	: req.body.challengedUserId,
 			challanger_user_id 	: req.body.challengerUserId,
@@ -136,6 +138,7 @@ module.exports = function(app) {
 		GM.find_turn({gameId: req.session.gameId,
 					userid : userId
 			}, function(turn){
+				// console.log("turn="+turn);
 				turn1 = turn;
 		})
 
@@ -144,7 +147,8 @@ module.exports = function(app) {
 		}, function(moves_info){
 			newData = {
 			    "moves":moves_info,
-			    "turn":turn1
+			    "turn":turn1,
+			    "user_name": req.session.user.name 
 			}
 			res.send(newData);
 		})

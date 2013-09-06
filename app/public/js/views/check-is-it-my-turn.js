@@ -7,6 +7,7 @@ function isItMyTurn(){
 		var url = '/is_it_my_turn';
 		$.get(url, function(newData){
 			if (newData.turn != 'no') {
+				// console.log(newData.turn)
 				var data = newData.turn;
 				document.getElementById('is_it_my_turn').value = 1;
 					if (x2 == 'w') {
@@ -32,10 +33,10 @@ function isItMyTurn(){
 					newGrid = document.getElementById(tmpGrid);
 					Grid = tmpGrid;
 				}else if(WK == 1 && BK == 0){
-					alert("Game Over White is \n WINNER")
+					alert("Game Over "+newData.user_name+" is \n WINNER")
 					window.location.href = "/home";
 				}else if(WK == 0 && BK == 1 ){
-					alert("Game Over Black is \n WINNER")
+					alert("Game Over "+newData.user_name+" is \n WINNER")
 					window.location.href = "/home";
 				}
 			}

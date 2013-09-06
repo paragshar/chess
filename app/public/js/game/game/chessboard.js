@@ -240,11 +240,11 @@ function dragend(color, x, y, x1, y1, name)
 			document.getElementById('is_it_my_turn').value = 0;
 			document.getElementById('pgrid').value = trgrid;
 		}else if(BK == 1 && WK == 0){
-			alert("Game Over White is \n WINNER")
+			alert("congratulations \n you WIN the game")
 			document.getElementById('is_it_my_turn').value = 1;
 			window.location.href = "/home";
 		}else if(BK == 0 && WK == 1){
-			alert("Game Over Black is \n WINNER")
+			alert("congratulations \n you WIN the game")
 			document.getElementById('is_it_my_turn').value = 1;
 			window.location.href = "/home";
 		}
