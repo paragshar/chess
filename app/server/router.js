@@ -138,10 +138,8 @@ module.exports = function(app) {
 		GM.find_turn({gameId: req.session.gameId,
 					userid : userId
 			}, function(turn){
-				// console.log("turn="+turn);
 				turn1 = turn;
 		})
-
 		GM.getAllMoves({
 			gameId : req.session.gameId
 		}, function(moves_info){
@@ -321,6 +319,7 @@ module.exports = function(app) {
 	        	{grid 				: JSON.parse(data),
 	        	 gameId 			: req.session.gameId,
 	        	 moved_pawn_color	: req.query["moved_pawn_color"],
+	        	 moved_coin			: req.query["moved_coin"],
 	        	 user_Id 			: req.session.user._id ,
 	        	 x  				: req.query["x"],
 	        	 y 					: req.query["y"],

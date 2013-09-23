@@ -53,6 +53,7 @@ function knight (layer, color, x, y, imgSrc, name) {
               var oldy = this.y
               this.moveKnight(x1, y1);
               dragend(x2, oldx, oldy, x1, y1, knightObj.name);
+             
             }else {
               this.moveKnight(this.x, this.y)
               alert("move is not correct");

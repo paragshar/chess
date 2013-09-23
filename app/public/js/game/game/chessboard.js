@@ -62,6 +62,7 @@ window.onload = function () {
 	    var wrook1 = new rook(layer2, 'w', 0, 0, whiterook, "rook");
 	    Grid[0][0] = wrook1;
 
+
 	    var wPawn1 = new pawn(layer2, 'w', 0, 1, whitePawn, "pawn");
 	    Grid[0][1] = wPawn1;
 	    
@@ -167,7 +168,6 @@ window.onload = function () {
 	    Grid[4][7] = bking;
 	    
 	    stage.add(layer2);
-
 	Draw();
 
 	function Draw(){
@@ -236,18 +236,20 @@ function dragend(color, x, y, x1, y1, name)
 	xmlhttp.open("post","/move?moved_pawn_color=" + color + "&x=" + x + "&y=" + y +"&x1=" + x1 +"&y1=" +y1 + "&moved_coin=" + name,true);
 	var trgrid = getTransformedGrid();
 	xmlhttp.send(trgrid);
-		if (BK == 0 && WK == 0) {
-			document.getElementById('is_it_my_turn').value = 0;
-			document.getElementById('pgrid').value = trgrid;
-		}else if(BK == 1 && WK == 0){
-			alert("congratulations \n you WIN the game")
-			document.getElementById('is_it_my_turn').value = 1;
-			window.location.href = "/home";
-		}else if(BK == 0 && WK == 1){
-			alert("congratulations \n you WIN the game")
-			document.getElementById('is_it_my_turn').value = 1;
-			window.location.href = "/home";
-		}
+
+	if (BK == 0 && WK == 0) {
+		document.getElementById('is_it_my_turn').value = 0;
+		document.getElementById('pgrid').value = trgrid;
+	}else if(BK == 1 && WK == 0){
+		alert("congratulations \n you WIN the game")
+		document.getElementById('is_it_my_turn').value = 1;
+		window.location.href = "/home";
+	}else if(BK == 0 && WK == 1){
+		alert("congratulations \n you WIN the game")
+		document.getElementById('is_it_my_turn').value = 1;
+		window.location.href = "/home";
+	}
+	
 }
 
 function getTransformedGrid(){
@@ -286,54 +288,6 @@ function getParam( name )
 	else{
 		return results[1];
 	}
-}
-
-
-function animation (x, y, x1, y1, color) {
-	var cellspace = 21.5;
-    var cell = 75
-    if (color == 'b') {
-		var layer = new Kinetic.Layer();
-		var rect = new Kinetic.Rect({
-			x: x*cell,
-			y: y*cell,
-			width: 75,
-			height: 75,
-			stroke: 'black',
-			strokeWidth: 4
-		});
-	}else{
-		var layer = new Kinetic.Layer();
-		var rect = new Kinetic.Rect({
-			x: x*cell,
-			y: y*cell,
-			width: 75,
-			height: 75,
-			stroke: 'white',
-			strokeWidth: 4
-		});
-	}
-
-		layer.add(rect);
-		stage.add(layer);
-
-		var tween = new Kinetic.Tween({
-		node: rect, 
-		x: x1*cell,
-		y: y1*cell,
-		});
-
-		setTimeout(function() {
-		tween.play();
-		},500);
-
-		setTimeout(function(){
-			clearlayer()
-		},4000)
-
-		function clearlayer(){
-			layer.remove();
-		}
 }
 
 function createObj (Objname) {
@@ -375,3 +329,91 @@ function createObj (Objname) {
  		}
  	}
 } 
+
+function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
+	var newx = x1;
+	var newy = y1;
+	var movedcoin;
+	movedcoin = find_coin(moved_coin, moved_coin_color);
+	var newcolor = checkColor(x1, y1)
+	var layer = new Kinetic.Layer();
+		var rect = new Kinetic.Rect({
+			x: x1*cell,
+			y: y1*cell,
+			width: 75,
+			height: 75,
+			fill: newcolor
+		});
+
+		var imageObj = new Image();
+        var coin = new Kinetic.Image({
+			image: imageObj,
+			x: x*cell+spaceOfCell,
+			y: y*cell+spaceOfCell,
+        });
+
+        imageObj.src = movedcoin;
+
+			layer.add(rect);
+			layer.add(coin);
+
+		var tween = new Kinetic.Tween({
+			duration: 3,
+			node: coin, 
+			x: x1*cell+spaceOfCell,
+			y: y1*cell+spaceOfCell,
+		});
+
+		setTimeout(function() {
+			tween.play();
+		},0);
+
+		stage.add(layer);
+		setTimeout(function(){
+			layer.remove();
+		},4000)
+}
+
+function checkColor (x1, y1) {
+	var valx = x1;
+	var valy = y1;
+	if (valx%2 == 0 && valy%2 == 0) {
+		return 'd58a49';
+	} else if (valx%2 !=0 && valy%2 !=0) {
+		return 'd58a49';
+	}else{
+		return 'ffd09c';
+	}
+}
+
+function find_coin (moved_coin, moved_coin_color) {
+	if (moved_coin_color == 'w') {
+		if (moved_coin == 'pawn') {
+			return whitePawn;
+		}else if (moved_coin == 'knight') {
+			return whiteknight;
+		}else if (moved_coin == 'rook') {
+			return whiterook;
+		}else if (moved_coin == 'king') {
+			return whiteKing;
+		}else if (moved_coin == "queen") {
+			return whiteQueen;
+		}else if (moved_coin == "bishop") {
+			return whitebishop;
+		};
+	}else{
+		if (moved_coin == 'pawn') {
+			return blackPawn;
+		}else if (moved_coin == 'knight') {
+			return blackKnight;
+		}else if (moved_coin == 'rook') {
+			return blackrook;
+		}else if (moved_coin == 'king') {
+			return blackKing;
+		}else if (moved_coin == "queen") {
+			return blackQueen;
+		}else if (moved_coin == "bishop") {
+			return blackbishop;
+		};
+	}
+}

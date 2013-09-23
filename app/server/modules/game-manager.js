@@ -47,7 +47,7 @@ exports.gameUpdate = function(newData, callback)
 	    }else{
 	    	if(res[0]['player1_id'] == newData.user_Id){
 	    		games.update(
-				{ '_id' :ObjectID(newData.gameId) }, { $set: { grid: newData.grid , last_move_player_id : newData.user_Id, last_move_color : newData.moved_pawn_color , x : newData.x , y : newData.y , x1 : newData.x1 , y1: newData.y1} } ,
+				{ '_id' :ObjectID(newData.gameId) }, { $set: { grid: newData.grid , last_move_player_id : newData.user_Id, last_move_color : newData.moved_pawn_color , x : newData.x , y : newData.y , x1 : newData.x1 , y1: newData.y1, moved_coin: newData.moved_coin} } ,
 		    	function(err, res){
 				    if(err){
 				    	callback(err);
@@ -55,7 +55,7 @@ exports.gameUpdate = function(newData, callback)
 				});
 	    	}else if(res[0]['player2_id'] == newData.user_Id){
 	    		games.update(
-				{ '_id' :ObjectID(newData.gameId) }, { $set: { grid: newData.grid , last_move_player_id : newData.user_Id, last_move_color : newData.moved_pawn_color , x : newData.x , y : newData.y , x1 : newData.x1 , y1: newData.y1} } ,
+				{ '_id' :ObjectID(newData.gameId) }, { $set: { grid: newData.grid , last_move_player_id : newData.user_Id, last_move_color : newData.moved_pawn_color , x : newData.x , y : newData.y , x1 : newData.x1 , y1: newData.y1, moved_coin: newData.moved_coin} } ,
 		    	function(err, res){
 				    if(err){
 				    	callback(err);
@@ -70,9 +70,9 @@ exports.find_turn = function(newData, callback){
 	games.find({'_id' : ObjectID(newData.gameId)}).toArray(
 		function(e, res) {
 			if (res[0]['last_move_player_id'] != newData.userid) {
-				callback(res)
+				callback(res);
 			}else{
-				callback('no')
+				callback('no');
 			}
 		}
 	);
