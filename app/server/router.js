@@ -9,11 +9,13 @@ var request = require("request");
 module.exports = function(app) {
 
 // main login page //
+	app.set('views', __dirname + '/views');
+	app.engine('html', require('ejs').renderFile);
 
 	app.get('/', function(req, res){
 	// check if the user's credentials are saved in a cookie //
 		if (req.cookies.user == undefined || req.cookies.pass == undefined){
-			res.render('login', { title: 'Hello - Please Login To Your Account' });
+			res.render('login.html');
 		}	else{
 	// attempt automatic login //
 			AM.autoLogin(req.cookies.user, req.cookies.pass, function(o){
@@ -49,7 +51,7 @@ module.exports = function(app) {
 	// if user is not logged-in redirect back to login page //
 	        res.redirect('/');
 	    }   else{
-			res.render('home', {
+			res.render('home.html', {
 				title : 'Control Panel',
 				countries : CT,
 				udata : req.session.user
@@ -88,7 +90,7 @@ module.exports = function(app) {
 // creating new accounts //
 	
 	app.get('/signup', function(req, res) {
-		res.render('signup', {  title: 'Signup', countries : CT });
+		res.render('signup.html', {  title: 'Signup', countries : CT });
 	});
 	
 	app.post('/signup', function(req, res){
@@ -161,7 +163,7 @@ module.exports = function(app) {
 	})
 	app.get('/challenges', function(req, res){
 		CM.getAllChallenges( function(e, challengers){
-			res.render('challenges', { title : 'Challengers List', challenge : challengers, user: req.session.user});
+			res.render('challengers.html', { title : 'Challengers List', challenge : challengers, user: req.session.user});
 		})
 	});
 
@@ -276,9 +278,14 @@ module.exports = function(app) {
 		});
 	});
 	
+	
+	app.get('/index', function(req, res) {
+		res.render('index.html');
+	});
+	
 	app.get('/playerslist', function(req, res) {
 	    AM.getAllRecords( function(e, accounts){
-			res.render('playerslist', { title : 'Players List', accts : accounts , user: req.session.user});
+			res.render('playerslist.html', { title : 'Players List', accts : accounts , user: req.session.user});
 		})
 	});
 
@@ -288,12 +295,12 @@ module.exports = function(app) {
 	    GM.findById(game_id, function(e, o){
 	    	if(o){
 	    		if(o.player1_id == req.session.user._id){
-	    			res.render('play', {
+	    			res.render('play.html', {
 	        			title: 'Play',
 	        			is_it_my_turn:1,
 	    			});
 	    		}else{
-	    			res.render('play', {
+	    			res.render('play.html', {
 	        			title: 'Play',
 	        			is_it_my_turn:0,
 	    			});

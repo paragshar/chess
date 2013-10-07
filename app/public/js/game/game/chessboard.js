@@ -3,6 +3,7 @@ var ScreenHeight = 600 ;
 var cell = 75;
 var spaceOfCell = 21.5;
 var x2 = 'b';
+var x3 = 'b';
 var params;
 var is_it_my_turn;
 var layer2;
@@ -55,7 +56,9 @@ window.onload = function () {
         stage = new Kinetic.Stage({
           container: 'canvas',
           width: ScreenWidth,
-          height: ScreenHeight
+          height: ScreenHeight,
+     
+
         })
 		layer2 = new Kinetic.Layer();
 
@@ -223,13 +226,12 @@ function createGameObject(obj){
 
 function dragend(color, x, y, x1, y1, name)
 {
+	console.log(x2);
 	var xmlhttp;
-	if (window.XMLHttpRequest)
-	{
+	checkmate(x1, y1, name, color);
+	if (window.XMLHttpRequest){
 		xmlhttp=new XMLHttpRequest();
-	}
-	else
-	{
+	} else{
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	is_it_my_turn = 'false';
@@ -249,6 +251,7 @@ function dragend(color, x, y, x1, y1, name)
 		document.getElementById('is_it_my_turn').value = 1;
 		window.location.href = "/home";
 	}
+
 	
 }
 
@@ -289,6 +292,8 @@ function getParam( name )
 		return results[1];
 	}
 }
+
+
 
 function createObj (Objname) {
  	if (movedColor == 'w') {
@@ -335,14 +340,21 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 	var newy = y1;
 	var movedcoin;
 	movedcoin = find_coin(moved_coin, moved_coin_color);
-	var newcolor = checkColor(x1, y1)
 	var layer = new Kinetic.Layer();
 		var rect = new Kinetic.Rect({
 			x: x1*cell,
 			y: y1*cell,
 			width: 75,
 			height: 75,
-			fill: newcolor
+			fill: 'd58a49'
+		});
+
+		var rect1 = new Kinetic.Rect({
+			x: x1*cell,
+			y: y1*cell,
+			width: 75,
+			height: 75,
+			fill: 'ffd09c'
 		});
 
 		var imageObj = new Image();
@@ -354,8 +366,13 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 
         imageObj.src = movedcoin;
 
+		if (checkColor(x1, y1)) {
 			layer.add(rect);
 			layer.add(coin);
+		}else{
+			layer.add(rect1);
+			layer.add(coin);
+		}
 
 		var tween = new Kinetic.Tween({
 			duration: 3,
@@ -377,12 +394,14 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 function checkColor (x1, y1) {
 	var valx = x1;
 	var valy = y1;
+	// console.log(x%2 == 0);
+	// console.log(y%2 == 0);
 	if (valx%2 == 0 && valy%2 == 0) {
-		return 'd58a49';
+		return true;
 	} else if (valx%2 !=0 && valy%2 !=0) {
-		return 'd58a49';
+		return true;
 	}else{
-		return 'ffd09c';
+		return false;
 	}
 }
 
@@ -416,4 +435,24 @@ function find_coin (moved_coin, moved_coin_color) {
 			return blackbishop;
 		};
 	}
+}
+
+function checkmate (x1, y1) {
+	// for (var i = 1; i < 8; i++) {
+	// 	if (Grid[x1][i] != undefined) {
+	// 		console.log(Grid[x1][i]);
+	// 		console.log(Grid[x1][i].name)
+	// 		if (Grid[x1][i].name == 'rook' || Grid[x1][i] == 'queen') {
+	// 			console.log(Grid[x1][i].name);
+	// 			if (Grid[x1][i].color != 'b') {
+	// 				console.log('checkmate');
+	// 				break;
+	// 			}
+	// 		}else{
+	// 			break;
+	// 		}
+	// 	} else{
+	// 		// console.log('no');
+	// 	};
+	// }
 }

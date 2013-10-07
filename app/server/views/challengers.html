@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="img/fav-king.png" type="image/x-icon" />
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="menu">
+				<ul class="nav">
+					<li class="nav-elements back-color" id="global-nav" ><a class="ne-inner" href="playerslist">Players</a></li>
+					<li class="nav-elements back-color" id="global-nav" ><a class="ne-inner ne-inner1" href="challenges">Challengers<!-- <sup>12</sup> --></a></li>
+					<li class="nav-elements back-color player-details"><a class="ne-inner" href=""><%=user.name%></a></li>
+					<ul class="pd">
+							<li class="pd-inner back-color"><a href="/home">Update profile</a></li>
+							<li class="pd-inner back-color" id="btn-logout" ><a>Logout</a></li>
+					</ul>
+				</ul>
+			</div>
+		</header>
+		<div class="ch">
+			<div class="pl-heading back-color">
+				<p class="pl-text">Challenges</p>
+			</div>
+			<div class="pl-inner back-color">
+				<table class="spending">
+				 	<thead>
+				 		<tr>
+				 			<th>Name</th>
+				 			<th>Country</th>
+				 			<th>Date & time</th>
+				 			<th></th>
+				 		</tr>
+				 	</thead>
+					<tbody>
+						
+							<% for(var i=0; i < challenge.length; i++) { %>
+								<% if(user._id!= challenge[i].challanged_user_id && user._id== challenge[i].challanger_user_id && challenge[i].accept == 0) { %>
+									<tr>
+										<td><%= challenge[i].challanger_user_name%></td>
+										<td class="td-width">India</td>
+										<td class="dt"><%=challenge[i].date_and_time %></td>
+										<% var url = "/addaccept/?challengedUserId="+ challenge[i].challanged_user_id + "&challengerUserId="+ challenge[i].challanger_user_id  + "&challengeId="+ challenge[i]._id%>
+										<td class="accept-width"><a class="btn ac"  href='<%= url%>'> Accept Challenge</a></td>
+									</tr>
+								<% } %>
+							<% } %>
+						
+					</tbody>
+				</table>
+			</div>
+	</div>
+	<script src="/vendor/jquery.min.js"></script>
+	<script src="/vendor/jquery.form.js"></script>
+	<script src="/vendor/bootstrap-modal.js"></script>
+	<script src="/vendor/bootstrap-transition.js"></script>
+	<script src="/vendor/custom.js"></script>
+</body>
+</html>	

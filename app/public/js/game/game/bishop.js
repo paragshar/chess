@@ -56,6 +56,8 @@ function bishop (layer, color, x, y, imgSrc, name) {
                   var oldy = this.y
                   this.moveBishop(x1, y1);
                   dragend(x2, oldx, oldy, x1, y1, bishopObj.name);
+                  // console.log("this.bishopObjKJS")
+                  // console.log(this.bishopObjKJS)
             }else{
                   this.moveBishop(this.x, this.y);
                   alert("move is not correct");
@@ -305,6 +307,7 @@ function bishop (layer, color, x, y, imgSrc, name) {
     }
 
     this.turn = function(x2){
+      console.log(x2);
         if (Grid[this.x][this.y].color != x2) {
           return true;
         }else{

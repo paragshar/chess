@@ -1,0 +1,46 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="img/fav-king.png" type="image/x-icon" />
+</head>
+<body>
+	<div class="wrapper">
+		<div class="signup back-color">
+			<form class="user-details" id="account-form" method="post">
+				<p class="create">Create an account</p>
+				<p class="field">Name<input type="text" class="required ca" name="name" id="name-tf"></p>
+				<p class="field">Email<input type="text" class="required email ca" name="email" id="email-tf"></p>
+				<p class="field">Location<select class="ca arrow" id="country-list" name="country">
+					<option>Select</option>
+					<option>India</option>
+					<option>China</option>
+					<option>Srilanka</option>
+				</select></p>
+				<p class="create1">Choose your username and password</p>
+				<p class="field">Username<input type="text" class="required ca" name="user" id="user-tf"></p>
+				<p class="field">Password<input type="password" class="required ca" value="" name="pass" id="pass-tf"></p>
+				<div class="btn-group">
+					<button class="btn new-create" id="account-form-btn2" type="submit">Create my account</button>
+					<button class="btn cancel" id="account-form-btn1" type="button">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<div class="back-color success">
+			<p class="success-msg">Success</p>
+			<p class="msg">Your account has been created successfully.</p>
+			<a href="/" class="btn ok" >Ok</a>
+		</div>
+	</div>
+
+	<script src="/vendor/jquery.min.js"></script>
+	<script src="/vendor/jquery.form.js"></script>
+	<script src="/vendor/bootstrap-modal.js"></script>
+	<script src="/vendor/bootstrap-transition.js"></script>
+	<script src="/vendor/custom.js"></script>
+	<script src="/js/views/signup.js"></script>
+	<script src="/js/controllers/signupController.js"></script>
+	<script src="/js/form-validators/accountValidator.js"></script>
+
+</body>
+</html>	

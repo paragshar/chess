@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="img/fav-king.png" type="image/x-icon" />
+</head>
+<body>
+	<div class="wrapper1" >
+		<input type="hidden" id="is_it_my_turn" value= 0>
+		<input type="hidden" id="pgrid" value= 0>
+		<div class="play-inner">
+			<div class="play-heading">
+				<img  src="img/battle-chess.png">
+			</div>
+			<div class="chess">
+				<div class="chess-board">
+					<img src="img/chess-board.png">
+				</div>
+				<div class="players">
+					<p class="players-title">Players</p>
+					<div class="players-details">
+						<div class="player-name">
+							<p class="name">Harish</p>
+						</div>
+						<div class="player-coin">
+							<img src="img/white-coin.png">
+						</div>
+					</div>
+					<div class="players-details">
+						<div class="player-name">
+							<p class="name">Mohan</p>
+						</div>
+						<div class="player-coin">
+							<img src="img/black-coin.png">
+						</div>
+					</div>
+					<div class="turn-details">
+						<div class="turn-header back-color">
+							<p class="heading">Moves history</p>
+						</div>
+						<div class="turns back-color" id="moves_info">
+							
+						</div>
+						<div class="whose-turn" id="status">
+							<p>Turn is yours</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="canvas"></div>
+	</div>
+
+	<script src="/vendor/jquery.min.js"></script>
+	<script src="/vendor/jquery.form.js"></script>
+	<script src="/js/views/check-is-it-my-turn.js"></script>
+	<script src="/js/views/moves.js"></script>
+	<script src="/js/game/game/chessboard.js"></script>
+	<script src="/js/game/game/pawn.js"></script>
+	<script src="/js/game/game/rook.js"></script>
+	<script src="/js/game/game/king.js"></script>
+	<script src="/js/game/game/queen.js"></script>
+	<script src="/js/game/game/knight.js"></script>
+	<script src="/js/game/game/bishop.js"></script>
+	<script src="/vendor/jquery-ui.js"></script>
+	<script src="/js/game/lib/kinetic.js"></script>
+	<script src="/vendor/custom.js"></script>
+</body>
+</html>	

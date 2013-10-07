@@ -210,6 +210,7 @@ function pawn (layer, color, x, y, imgSrc, name) {
 
 	this.turn = function(x2){
 		if (Grid[this.x][this.y].color != x2) {
+
 			return true;
 		}else{
 			return false;

@@ -21,6 +21,8 @@ $(document).ready(function(){
 		},
 		error : function(e){
             lv.showLoginError('Login Failure', 'Please check your username and/or password');
+            console.log("calling error")
+            $(".error").show();
 		}
 	}); 
 	$('#user-tf').focus();
@@ -45,7 +47,7 @@ $(document).ready(function(){
 		},
 		error : function(){
 			ev.showEmailAlert("Sorry. There was a problem, please try again later.");
-		}
+		},
 	});
 	
 })

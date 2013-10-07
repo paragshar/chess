@@ -10,6 +10,7 @@ $(document).ready(function(){
 		},
 		success	: function(responseText, status, xhr, $form){
 			if (status == 'success') $('.modal-alert').modal('show');
+			$(".success").show();
 		},
 		error : function(e){
 			if (e.responseText == 'email-taken'){

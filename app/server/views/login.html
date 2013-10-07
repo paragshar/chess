@@ -1,0 +1,62 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="img/fav-king.png" type="image/x-icon" />
+</head>
+<body>
+	<div class="wrapper">
+		<a class="click btn join" href="/signup">Click to join</a>
+		<form class="user-input"  id="login-form" method="post">
+			<div class="user-logs">
+				<div class="log-in">
+					<div class="login">
+						<input type="text" class="required usrname" id="user-tf" name="user" placeholder="Username">
+						<input type="password" class="required password" id="pass-tf" name="pass" placeholder="Password">
+						<button class="btn signin" id="btn-login" type="submit">Sign In</button>
+					</div>
+					<div class="login-sub">
+						<div class="slidetwo">
+							<input type="checkbox" class="remember" checked="checked">
+							<a class="me" id="remember-me">Remember me</a>
+							<a class="forgot" id="forgot-password" href="#" >Forgot password?</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="popups" >
+			<form class="well span5" id="get-credentials-form" method="post">
+				<div class="forgot-pass back-color" >
+					<div class="fp-inner" >
+						<p class="fp1">Forgotten password</p>
+						<P class="fp2">Please enter your email address associated with your accoun</P>
+						<p class="fp3">Email<sup>*</sup><input type="text" class="fp-input" id="email-tf" name="email"></p>
+						<button class="btn signin fp-cancel" id="cancel" data-dismiss="modal">Cancel</button>
+						<button class="btn signin fp-submit" id="submit" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="error">
+		<div class="error-content back-color" id="error-msg">
+			<p class="error-inner">Enter correct user name address or password</p>
+			<a href="" class="btn signin">Ok</a>
+		</div>
+	</div>
+
+
+	<script src="/vendor/jquery.min.js"></script>
+	<script src="/vendor/jquery.form.js"></script>
+	<script src="/vendor/bootstrap-modal.js"></script>
+	<script src="/vendor/bootstrap-transition.js"></script>
+	<script src="/js/views/login.js"></script>
+	<script src="/js/controllers/loginController.js"></script>
+	<script src="/js/form-validators/loginValidator.js"></script>
+	<script src="/js/form-validators/emailValidator.js"></script>
+	<script src="/vendor/custom.js"></script>
+
+</body>
+</html>	
