@@ -393,8 +393,6 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 function checkColor (x1, y1) {
 	var valx = x1;
 	var valy = y1;
-	// console.log(x%2 == 0);
-	// console.log(y%2 == 0);
 	if (valx%2 == 0 && valy%2 == 0) {
 		return true;
 	} else if (valx%2 !=0 && valy%2 !=0) {

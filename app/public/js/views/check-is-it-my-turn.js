@@ -6,6 +6,8 @@ function isItMyTurn(){
 	if($('#is_it_my_turn').val() == 0){
 		var url = '/is_it_my_turn';
 		$.get(url, function(newData){
+			// document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
+			// document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
 			if (newData.turn != 'no' ) {
 				var data = newData.turn;
 				if (data[0] != null ) {
@@ -38,22 +40,35 @@ function isItMyTurn(){
 							x2 = 'w'
 						}
 					}else if(WK == 1 && BK == 0){
-						alert("sorry you lost the game");
+						$(".congrads").show();
 						window.location.href = "/home";
 					}else if(WK == 0 && BK == 1 ){
-						alert("sorry you lost the game");
+						$(".sorry").show();
 						window.location.href = "/home";
 					}
 				};
 				
 			}
 			if (newData.moves != 'no') {
+				var playersname = new Array();
+				var moves_info = new Array();
 				var data = newData.moves;
 				var moves = new Array();
 				for (var i = 0; i < data.length; i++) {
-					moves[i] = data[i]+'<br/>';
+					moves[i] = data[i]+">";
 				}
-				document.getElementById('moves_info').innerHTML = moves.join(" ");
+				var newmoves = moves.join(" ");
+				var newmoves1 = newmoves.split(">");
+				for (var i = 0; i < newmoves1.length; i += 2) {
+					playersname.push( newmoves1[i]);
+				};
+				for (var i = 1; i < newmoves1.length; i += 2) {
+					moves_info.push( newmoves1[i]);
+					
+				};
+				console.log(playersname.join(" "));
+				document.getElementById('moves_info').innerHTML = moves_info.join(" ");
+				document.getElementById('playersname').innerHTML = playersname.join(" ");
 			};
 
 			if (document.getElementById('is_it_my_turn').value == 1) {

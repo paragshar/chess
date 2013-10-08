@@ -38,8 +38,13 @@
 						<div class="turn-header back-color shadow">
 							<p class="heading">Moves history</p>
 						</div>
-						<div class="turns back-color shadow" id="moves_info">
-							
+						<div class="turns back-color shadow" >
+							<div class="turns-names" id="playersname">
+								
+							</div>
+							<div class="turns-info" id="moves_info">
+								
+							</div>
 						</div>
 						<div class="whose-turn" >
 							<p id="status">Turn is yours</p>
@@ -49,8 +54,33 @@
 			</div>
 		</div>
 		<div id="canvas"></div>
+		<div class="congrads common back-color shadow">
+			<h1>Game over</h1>
+			<P>Congradulation</P>
+			<p>Divya own this game</p>
+			<button class="btn exit">Exit</button>
+		</div>
+		<div class="sorry common back-color shadow">
+			<h1>Game over</h1>
+			<P>Sorry Hari lost this game ! </P>
+			<p>Better luck next time</p>
+			<button class="btn exit">Exit</button>
+		</div>
+		<div class="replace common back-color shadow" id="newPown">
+			<div class="pawn-replace">
+				<button class="btn replace1">Queen</button>
+				<button class="btn replace1">Knight</button>
+				<button class="btn replace1">Bishop</button>
+				<button class="btn replace1">Rook</button>
+			</div>
+			<div>
+				<button class="btn cancel-replace">cancel</button>
+			</div>
+		</div>
 	</div>
-
+	// <script type="text/javascript">
+	// 	var strs = str.split(".")
+	// </script>
 	<script src="/vendor/jquery.min.js"></script>
 	<script src="/vendor/jquery.form.js"></script>
 	<script src="/js/views/check-is-it-my-turn.js"></script>

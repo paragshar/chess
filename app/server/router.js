@@ -77,6 +77,7 @@ module.exports = function(app) {
 						res.cookie('user', o.user, { maxAge: 900000 });
 						res.cookie('pass', o.pass, { maxAge: 900000 });	
 					}
+					$(".success").show();
 					res.send('ok', 200);
 				}
 			});
