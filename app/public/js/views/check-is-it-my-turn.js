@@ -10,7 +10,8 @@ function isItMyTurn(){
 				var data = newData.turn;
 				if (data[0] != null ) {
 					document.getElementById('is_it_my_turn').value = 1;
-					
+					document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
+					document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
 					WK = 0;
 					BK = 0;
 					// animation(data[0]["x"], data[0]["y"], data[0]["x1"], data[0]["y1"], data[0]["last_move_color"])
@@ -37,10 +38,10 @@ function isItMyTurn(){
 							x2 = 'w'
 						}
 					}else if(WK == 1 && BK == 0){
-						alert("sorry you lost the game")
+						alert("sorry you lost the game");
 						window.location.href = "/home";
 					}else if(WK == 0 && BK == 1 ){
-						alert("sorry you lost the game")
+						alert("sorry you lost the game");
 						window.location.href = "/home";
 					}
 				};

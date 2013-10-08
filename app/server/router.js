@@ -170,6 +170,8 @@ module.exports = function(app) {
 // for accepte list
 	app.get('/addaccept', function(req, res){
 		gameId = GM.createNewGame({
+				player1 				: req.query["player1"],
+				player2 				: req.query["player2"],
 				player1_id 				: req.query["challengedUserId"],
 				player1_color 			: 'w',
 				player2_id 				: req.query["challengerUserId"],

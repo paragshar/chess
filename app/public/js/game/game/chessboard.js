@@ -18,20 +18,20 @@ var oldValX;
 var oldValY;
 //image path for pawn 
 	//for white
-var whitePawn = '/img/game/white_pawn.gif';
-var whiterook = '/img/game/white_rook.gif';
-var whitebishop = '/img/game/white_bishop.gif';
-var whiteknight = '/img/game/white_knight.gif';
-var whiteQueen = '/img/game/white_queen.gif';
-var whiteKing = '/img/game/white_king.gif';
+var whitePawn = '/img/game/white_pawn.png';
+var whiterook = '/img/game/white_rook.png';
+var whitebishop = '/img/game/white_bishop.png';
+var whiteknight = '/img/game/white_knight.png';
+var whiteQueen = '/img/game/white_queen.png';
+var whiteKing = '/img/game/white_king.png';
 
 	//for black
-var blackPawn = '/img/game/black_pawn.gif';
-var blackrook = '/img/game/black_rook.gif';
-var blackbishop = '/img/game/black_bishop.gif';
-var blackKnight = '/img/game/black_knight.gif';
-var blackQueen = '/img/game/black_queen.gif';
-var blackKing = '/img/game/black_king.gif';
+var blackPawn = '/img/game/black_pawn.png';
+var blackrook = '/img/game/black_rook.png';
+var blackbishop = '/img/game/black_bishop.png';
+var blackKnight = '/img/game/black_knight.png';
+var blackQueen = '/img/game/black_queen.png';
+var blackKing = '/img/game/black_king.png';
 
 var Grid = new Array(8)
 	for (x = 0; x < 8; x++) {
@@ -194,31 +194,31 @@ window.onload = function () {
 }	
 
 function createGameObject(obj){
-	if(obj.imgSrc == "/img/game/white_pawn.gif"){
+	if(obj.imgSrc == "/img/game/white_pawn.png"){
 		el = new pawn(layer2, 'w', obj.x, obj.y, whitePawn, obj.name);
-	}else if (obj.imgSrc == "/img/game/white_king.gif") {
+	}else if (obj.imgSrc == "/img/game/white_king.png") {
 		WK = 1;
 		el = new king(layer2, 'w', obj.x, obj.y, whiteKing, obj.name);
-	}else if (obj.imgSrc == "/img/game/white_rook.gif") {
+	}else if (obj.imgSrc == "/img/game/white_rook.png") {
 		el = new rook(layer2, 'w', obj.x, obj.y, whiterook, obj.name);
-	}else if (obj.imgSrc == "/img/game/white_bishop.gif") {
+	}else if (obj.imgSrc == "/img/game/white_bishop.png") {
 		el = new bishop(layer2, 'w', obj.x, obj.y, whitebishop, obj.name);
-	}else if (obj.imgSrc == "/img/game/white_knight.gif") {
+	}else if (obj.imgSrc == "/img/game/white_knight.png") {
 		el = new knight(layer2, 'w', obj.x, obj.y, whiteknight, obj.name);
-	}else if (obj.imgSrc == "/img/game/white_queen.gif") {
+	}else if (obj.imgSrc == "/img/game/white_queen.png") {
 		el = new queen(layer2, 'w', obj.x, obj.y, whiteQueen, obj.name);
-	}else if(obj.imgSrc == "/img/game/black_pawn.gif")
+	}else if(obj.imgSrc == "/img/game/black_pawn.png")
 		el = new pawn(layer2, 'b', obj.x, obj.y, blackPawn, obj.name);
-	else if(obj.imgSrc == "/img/game/black_king.gif"){
+	else if(obj.imgSrc == "/img/game/black_king.png"){
 		BK = 1;
 		el = new king(layer2, 'b', obj.x, obj.y, blackKing, obj.name);
-	}else if (obj.imgSrc == "/img/game/black_rook.gif") {
+	}else if (obj.imgSrc == "/img/game/black_rook.png") {
 		el = new rook(layer2, 'b', obj.x, obj.y, blackrook, obj.name);
-	}else if (obj.imgSrc == "/img/game/black_bishop.gif") {
+	}else if (obj.imgSrc == "/img/game/black_bishop.png") {
 		el = new bishop(layer2, 'b', obj.x, obj.y, blackbishop, obj.name);
-	}else if (obj.imgSrc == "/img/game/black_knight.gif") {
+	}else if (obj.imgSrc == "/img/game/black_knight.png") {
 		el = new knight(layer2, 'b', obj.x, obj.y, blackKnight, obj.name);
-	}else if (obj.imgSrc == "/img/game/black_queen.gif") {
+	}else if (obj.imgSrc == "/img/game/black_queen.png") {
 		el = new queen(layer2, 'b', obj.x, obj.y, blackQueen, obj.name);
 	}
 	return el;
@@ -226,7 +226,6 @@ function createGameObject(obj){
 
 function dragend(color, x, y, x1, y1, name)
 {
-	console.log(x2);
 	var xmlhttp;
 	checkmate(x1, y1, name, color);
 	if (window.XMLHttpRequest){
@@ -262,11 +261,11 @@ function getTransformedGrid(){
 		for(var j = 0; j < Grid[i].length; j++){
 			var el = Grid[i][j];
 			if(el != undefined){
-				if (el.imgSrc == "/img/game/black_king.gif") {
+				if (el.imgSrc == "/img/game/black_king.png") {
 					var obj = {color:el.color, x:el.x, y:el.y, imgSrc:el.imgSrc, name:el.name};
 					transformedGrid[i][j] = obj;
 					BK = 0
-				}else if (el.imgSrc == "/img/game/white_king.gif") {
+				}else if (el.imgSrc == "/img/game/white_king.png") {
 					var obj = {color:el.color, x:el.x, y:el.y, imgSrc:el.imgSrc, name:el.name};
 					transformedGrid[i][j] = obj;
 					WK = 0

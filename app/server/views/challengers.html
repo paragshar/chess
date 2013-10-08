@@ -41,7 +41,7 @@
 										<td><%= challenge[i].challanger_user_name%></td>
 										<td class="td-width">India</td>
 										<td class="dt"><%=challenge[i].date_and_time %></td>
-										<% var url = "/addaccept/?challengedUserId="+ challenge[i].challanged_user_id + "&challengerUserId="+ challenge[i].challanger_user_id  + "&challengeId="+ challenge[i]._id%>
+										<% var url = "/addaccept/?challengedUserId="+ challenge[i].challanged_user_id + "&challengerUserId="+ challenge[i].challanger_user_id  + "&challengeId="+ challenge[i]._id +"&player1="+ challenge[i].challanger_user_name+ "&player2="+ user.name %>
 										<td class="accept-width"><a class="btn ac"  href='<%= url%>'> Accept Challenge</a></td>
 									</tr>
 								<% } %>
