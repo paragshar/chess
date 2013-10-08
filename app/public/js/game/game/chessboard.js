@@ -345,7 +345,7 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 			y: y1*cell,
 			width: 75,
 			height: 75,
-			fill: 'd58a49'
+			fill: '000000'
 		});
 
 		var rect1 = new Kinetic.Rect({
@@ -353,7 +353,7 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 			y: y1*cell,
 			width: 75,
 			height: 75,
-			fill: 'ffd09c'
+			fill: '000000'
 		});
 
 		var imageObj = new Image();

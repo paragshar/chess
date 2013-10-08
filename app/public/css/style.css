@@ -554,33 +554,103 @@ tr:nth-child(even) {
 .player-coin img{
 	width: 30px;
 }
-.turn-details{
-	width: 370px;
-	height: 390px;
+ .turn-details{
+    width: 370px;
+    height: 430px;
 }
 .turn-header{
-	height: 50px;
-	border-bottom: 2px solid black;
+    height: 50px;
+    border-bottom: 2px solid black;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 2px 0 #000000;
 }
 .heading{
-	font-size: 30px;
-	margin-top: 0px;
+    font-size: 30px;
+    margin-top: 0px;
 }
 .turns{
-	height: 100%;
-	overflow-y:auto;
+    height: 380px;
+    overflow-y:auto;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 2px 0 #000000;
 
 }
+
 .whose-turn p{
 	font-size: 26px;
-    margin: 8px auto 0px;
+    margin: 15px auto 0px;
 }
 .whose-turn{
 	text-align: center;
+	font-size: 26px;
 }
 
 .kineticjs-content{
 	top: -616px;
 	left: 138px;
 
+}
+.common{
+	color: #D29900;
+    height: 300px;
+    margin-left: 480px;
+    margin-right: auto;
+    margin-top: -468px;
+    position: absolute;
+    text-align: center;
+    width: 500px;
+}
+.common h1{
+	font-size: 48px;
+}
+.common p{
+	font-size: 24px;
+}
+.exit{
+	width: 160px;
+	height: 30px;
+}
+.congrads{
+	display: none;
+}
+.sorry{
+	display: none;
+}
+.replace{
+	display: none;
+}
+.replace1{
+	width: 100px;
+}
+.pawn-replace{
+	margin-top: 90px;
+}
+.cancel-replace{
+	font-size: 24px;
+	margin-left: 10px;
+	width: 150px;
+	height: 40px;
+	margin-top: 40px;
+}
+.shadow{
+	border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 2px 0 #000000;
+    border-radius:4px 4px 4px 4px;
+}
+.log-out{
+	color: #D29900;
+    height: 160px;
+    margin: 216px auto 0;
+    text-align: center;
+    width: 300px;
+    display: none;
+}
+.logout-txt{
+	font-size: 24px;
+}
+.logout-confirm{
+	margin-top: 40px;
+}
+.logout-confirm .btn{
+	width: 130px;
 }
