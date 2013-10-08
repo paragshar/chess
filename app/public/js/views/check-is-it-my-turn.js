@@ -33,6 +33,8 @@ function isItMyTurn(){
 					
 					if (WK == 1 && BK == 1) {
 						newGrid = document.getElementById(tmpGrid);
+						$(".sorry").show();
+						$(".play-inner").hide();
 						Grid = tmpGrid;
 						if (x2 == 'w') {
 							x2 = 'b'
@@ -41,9 +43,11 @@ function isItMyTurn(){
 						}
 					}else if(WK == 1 && BK == 0){
 						$(".congrads").show();
+						$(".play-inner").hide();
 						window.location.href = "/home";
 					}else if(WK == 0 && BK == 1 ){
 						$(".sorry").show();
+						$(".play-inner").hide();
 						window.location.href = "/home";
 					}
 				};
@@ -66,7 +70,6 @@ function isItMyTurn(){
 					moves_info.push( newmoves1[i]);
 					
 				};
-				console.log(playersname.join(" "));
 				document.getElementById('moves_info').innerHTML = moves_info.join(" ");
 				document.getElementById('playersname').innerHTML = playersname.join(" ");
 			};

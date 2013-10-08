@@ -40,6 +40,10 @@ function HomeController()
 			data: {logout : true},
 			success: function(data){
 	 			that.showLockedAlert('You are now logged out.<br>Redirecting you back to the homepage.');
+	 			$(".log-out").show();
+	 			$(".update").hide();
+	 			$(".ch").hide();
+	 			$(".pl").hide();
 			},
 			error: function(jqXHR){
 				console.log(jqXHR.responseText+' :: '+jqXHR.statusText);

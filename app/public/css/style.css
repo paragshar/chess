@@ -64,6 +64,23 @@ a{
     padding-bottom: 4px;
     border: none;
 }
+.btn1{
+	background-image: linear-gradient(to bottom, #60681C 0%, #3B3E17 100%) !important;
+    color: #d29900 !important;
+    font-family: FjordOne-Regular;
+    font-size: 18px;
+    height: 30px;
+    text-align: center;
+    box-shadow: 0 -1px 0 0 #A3B130;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    padding-bottom: 4px;
+    border: none;
+}
+.user-details{
+	margin-left: 20px;
+}
 .join{
 	display: inline-block;
     height: 24px;
@@ -248,37 +265,69 @@ form{
 }
 .create{
 	font-size: 24px;
-	margin-top: 50px;
+	margin-top: 25px;
+}
+.update-count{
+    height: 55px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    width: 525px;
 }
 .field{
-	margin-left: 100px;
-	width: 400px;
-	overflow: hidden;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 130px;
 }
-.ca{
-	float: right;
-	width: 290px;
-	height: 40px;
-	border-radius: 4px;
-	overflow: hidden;
-	margin-right: 0px;
-	font-size: 18px;
-	color: #d29900;
-	background-color: #111111;
-	opacity: 1 !important;
-	border: none;
-	color: white;
-	padding-top: 7px;
+.field-input{
+     display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 289px;
 }
+.field-input input{
+    background-color: #111111;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    color: #d29900;
+    display: inline;
+    float: right;
+    font-size: 18px;
+    height: 40px;
+    margin-right: 0;
+    opacity: 1 !imporoverflow: hidden;tant;
+    overflow: hidden;
+    vertical-align: top;
+    width: 290px;
+}
+.field-input select{
+    width: 310px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #d29900;
+    padding: 6px 2px;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    border: none;
+    background: url(../img/arrow.png) no-repeat 265px center #111111;
+    display: inline;
+    vertical-align: top;
+    overflow: hidden;
+    font-size: 18px;
+    height: 40px;
+}
+
 .create1{
-	font-size: 24px;
-	margin-top: 20px;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 option{
 	color: white;
 }
 .new-create{
-	width: 305px;
+	width: 305px !important;
 	height: 40px;
 	font-size: 24px;
 	margin-left: 185px;
@@ -301,24 +350,29 @@ option{
     position: absolute;
     right: 0;
     top: 0;
-    width: 650px;
+    width: 600px;
+    text-align: center;
+    top: 280px;
 }
 .success-msg{
 	font-size: 30px;
 	color: #d29900;
 	margin-top: 25px;
-	margin-left: 80px;
+	margin-bottom: 25px;
+	/*margin-left: 60px;*/
 }
 .msg{
 	font-size: 24px;
 	color: #d29900;
-	margin-left: 80px;
+	margin-bottom: 25px;
+	/*margin-left: 60px;*/
 }
 .ok{
 	font-size: 24px;
-	width: 150px;
-	height: 40px;
-	margin-left: 265px;
+    height: 28px;
+    /*margin-left: 265px;*/
+    padding-top: 12px;
+    width: 100px;
 }
 /*.menu{
 	overflow: hidden;
@@ -504,6 +558,7 @@ td{
 	width: 243px;
 	padding-left: 20px;
 	padding-right: 0px;
+	height: 55px;
 }
 .td-width{
 	width: 203px;
@@ -630,7 +685,7 @@ tr:nth-child(even) {
     height: 300px;
     margin-left: 480px;
     margin-right: auto;
-    margin-top: -468px;
+    top:290px;
     position: absolute;
     text-align: center;
     width: 500px;
@@ -673,11 +728,11 @@ tr:nth-child(even) {
     border-radius:4px 4px 4px 4px;
 }
 .log-out{
-	color: #D29900;
+    color: #D29900;
     height: 160px;
-    margin: 216px auto 0;
     text-align: center;
     width: 300px;
+    top:290px;
     display: none;
 }
 .logout-txt{
@@ -688,4 +743,10 @@ tr:nth-child(even) {
 }
 .logout-confirm .btn{
 	width: 130px;
+}
+.waiting-img{
+	  height: 810px;
+}
+.fn{
+	font-size: 18px;
 }

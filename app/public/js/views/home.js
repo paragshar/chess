@@ -16,6 +16,8 @@ $(document).ready(function(){
 		},
 		success	: function(responseText, status, xhr, $form){
 			if (status == 'success') hc.onUpdateSuccess();
+			$(".success").show();
+			$(".update").hide();
 		},
 		error : function(e){
 			if (e.responseText == 'email-taken'){
