@@ -339,22 +339,40 @@ function hideEle (x, y, x1, y1, moved_coin, moved_coin_color) {
 	var newy = y1;
 	var movedcoin;
 	movedcoin = find_coin(moved_coin, moved_coin_color);
+	var darkColor = "/img/darkcolor.png";
+	var liteColor = "/img/litecolor.png";
 	var layer = new Kinetic.Layer();
-		var rect = new Kinetic.Rect({
-			x: x1*cell,
-			y: y1*cell,
-			width: 75,
-			height: 75,
-			fill: '000000'
-		});
+		// var rect = new Kinetic.Rect({
+		// 	x: x1*cell,
+		// 	y: y1*cell-2,
+		// 	width: 75,
+		// 	height: 75,
+		// 	fill: '000000'
+		// });
 
-		var rect1 = new Kinetic.Rect({
+		// var rect1 = new Kinetic.Rect({
+		// 	x: x1*cell,
+		// 	y: y1*cell-2,
+		// 	width: 75,
+		// 	height: 75,
+		// 	fill: '000000'
+		// });
+
+		var imageObjDark = new Image();
+        var rect1 = new Kinetic.Image({
+			image: imageObjDark,
 			x: x1*cell,
-			y: y1*cell,
-			width: 75,
-			height: 75,
-			fill: '000000'
-		});
+			y: y1*cell-2,
+        });
+         imageObjDark.src = darkColor;
+
+        var imageObjLite = new Image();
+        var rect = new Kinetic.Image({
+			image: imageObjLite,
+			x: x1*cell,
+			y: y1*cell-2,
+        });
+         imageObjLite.src = liteColor;
 
 		var imageObj = new Image();
         var coin = new Kinetic.Image({

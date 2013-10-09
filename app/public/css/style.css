@@ -655,11 +655,13 @@ tr:nth-child(even) {
     border: 1px solid rgba(0, 0, 0, 0);
     box-shadow: 0 0 2px 0 #000000;
     padding-left: 15px;
+    padding-top: 10px;
 }
 .turns-names{
 	width: 100px;
 	display:inline-block;
 	vertical-align: top;
+	overflow: hidden;
 }
 .turns-info{
 	width: 245px;
@@ -739,10 +741,12 @@ tr:nth-child(even) {
 	font-size: 24px;
 }
 .logout-confirm{
-	margin-top: 40px;
+	margin-top: 20px;
 }
 .logout-confirm .btn{
-	width: 130px;
+	 height: 25px;
+    padding-top: 5px;
+    width: 90px;
 }
 .waiting-img{
 	  height: 810px;

@@ -62,10 +62,10 @@ function isItMyTurn(){
 				var newmoves = moves.join(" ");
 				var newmoves1 = newmoves.split(">");
 				for (var i = 0; i < newmoves1.length; i += 2) {
-					playersname.push( newmoves1[i]);
+					playersname.push(newmoves1[i]+"</br>");
 				};
 				for (var i = 1; i < newmoves1.length; i += 2) {
-					moves_info.push( newmoves1[i]);
+					moves_info.push(newmoves1[i]+"</br>");
 					
 				};
 				document.getElementById('moves_info').innerHTML = moves_info.join(" ");
