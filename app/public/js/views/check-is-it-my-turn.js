@@ -33,8 +33,6 @@ function isItMyTurn(){
 					
 					if (WK == 1 && BK == 1) {
 						newGrid = document.getElementById(tmpGrid);
-						$(".sorry").show();
-						$(".play-inner").hide();
 						Grid = tmpGrid;
 						if (x2 == 'w') {
 							x2 = 'b'
