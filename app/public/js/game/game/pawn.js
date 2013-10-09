@@ -282,8 +282,8 @@ function pawn (layer, color, x, y, imgSrc, name) {
 	this.promotion = function(x1, y1){
 		if (Grid[this.x][this.y].color == 'w') {
 			if (y1 == 7) {
-   				$( "#newPown" ).dialog();
-   				$("#newPown").show();
+   				
+   				$(".replace").show();
    				newValX = x1;
    				newValY = y1;
    				movedColor = 'w';
@@ -291,8 +291,8 @@ function pawn (layer, color, x, y, imgSrc, name) {
 			};
 		}else if (Grid[this.x][this.y].color == 'b') {
 			if (y1 == 0) {
-				$( "#newPown" ).dialog();
-   				$("#newPown").show();
+				
+   				$(".replace").show();
    				newValX = x1;
    				newValY = y1;
    				movedColor = 'b';
@@ -304,7 +304,7 @@ function pawn (layer, color, x, y, imgSrc, name) {
 
 function newpown (name) {
 	selectedPownName = name;
-	$('#newPown').dialog('close')
+	$('.replace').hide();
 	if (selectedPownName != undefined) {
 		createObj(selectedPownName)
 	}else{

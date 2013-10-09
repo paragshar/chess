@@ -11,6 +11,7 @@ function isItMyTurn(){
 			if (newData.turn != 'no' ) {
 				var data = newData.turn;
 				if (data[0] != null ) {
+					// alert("calling123")
 					document.getElementById('is_it_my_turn').value = 1;
 					document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
 					document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
@@ -40,13 +41,28 @@ function isItMyTurn(){
 							x2 = 'w'
 						}
 					}else if(WK == 1 && BK == 0){
-						$(".congrads").show();
-						$(".play-inner").hide();
-						window.location.href = "/home";
+						if (data[0]['last_move_player_id'] == data[0]['player1_id']) {
+							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player2'] +" lost this game !"
+							$(".sorry").show();
+							$(".chess,.kineticjs-content").hide();
+						// window.location.href = "/home";
+						} else{
+							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player1'] +" lost this game !"
+							$(".sorry").show();
+							$(".chess,.kineticjs-content").hide();
+						};
+						
 					}else if(WK == 0 && BK == 1 ){
-						$(".sorry").show();
-						$(".play-inner").hide();
-						window.location.href = "/home";
+						if (data[0]['last_move_player_id'] == data[0]['player1_id']) {
+							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player2'] +" lost this game !"
+							$(".sorry").show();
+							$(".chess").hide();
+						// window.location.href = "/home";
+						} else{
+							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player1'] +" lost this game !"
+							$(".sorry").show();
+							$(".chess").hide();
+						};
 					}
 				};
 				

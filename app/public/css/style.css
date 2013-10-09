@@ -142,7 +142,7 @@ input[placeholder] {
 .login-sub{
 	height: 15px;
 	font-size: 14px;
-	margin-top: 1px;
+	margin-top: 3px;
 	margin-left: 60px;
 }
 /*checkbox*/
@@ -192,6 +192,7 @@ input[type=checkbox]:checked + label:before {
     text-decoration: none;
     vertical-align: middle;
     cursor: pointer;
+    font-size:13px; 
 }
 .popups{
 	margin-top: 160px;
@@ -217,7 +218,7 @@ input[type=checkbox]:checked + label:before {
 	width: 510px;
 	height: 250px;
 	margin: 0 auto;
-	padding-top: 50px;
+	padding-top: 25px;
 }
 .fp1{
 	font-size: 30px;
@@ -240,19 +241,21 @@ input[type=checkbox]:checked + label:before {
 .fp-cancel{
 	font-size: 24px;
 	margin-top: 40px;
-	margin-left: 170px;
+	margin-left: 115px;
 	width: 150px;
-	height: 40px;
+	height: 35px;
+	padding-top: 5px;
 }
 .fp-submit{
 	font-size: 24px;
 	margin-left: 20px;
 	width: 150px;
-	height: 40px;
+	height: 35px;
+	padding-top: 5px;
 }
 .signup{
 	width: 750px;
-	height: 545px;
+	height: 510px;
 	margin-left: auto;
     margin-right: auto;
     margin-top: 244px;
@@ -343,16 +346,15 @@ option{
 }
 .success{
 	display: none;
-    height: 210px;
+    height: 175px;
     left: 0;
     margin: 0 auto;
     overflow: hidden;
     position: absolute;
     right: 0;
-    top: 0;
-    width: 600px;
     text-align: center;
     top: 280px;
+    width: 540px;
 }
 .success-msg{
 	font-size: 30px;
@@ -368,11 +370,10 @@ option{
 	/*margin-left: 60px;*/
 }
 .ok{
-	font-size: 24px;
-    height: 28px;
-    /*margin-left: 265px;*/
-    padding-top: 12px;
-    width: 100px;
+	font-size: 18px;
+    height: 25px;
+    padding-top: 5px;
+    width: 90px;
 }
 /*.menu{
 	overflow: hidden;
@@ -457,7 +458,7 @@ option{
 	color: white;
 }*/
 .error{
-	top: 0px;
+	top: 275px;
 	left: 0px;
 	right: 0px;
 	margin: 0 auto;
@@ -473,6 +474,7 @@ option{
     width: 476px;
     padding-top: 10px;
 }
+
 .pd{
 	padding: 0px;
 	display: none;
@@ -699,8 +701,9 @@ tr:nth-child(even) {
 	font-size: 24px;
 }
 .exit{
-	width: 160px;
-	height: 30px;
+	width: 100px;
+	height: 26px;
+	padding-top: 4px;
 }
 .congrads{
 	display: none;
@@ -718,11 +721,9 @@ tr:nth-child(even) {
 	margin-top: 90px;
 }
 .cancel-replace{
-	font-size: 24px;
-	margin-left: 10px;
-	width: 150px;
-	height: 40px;
-	margin-top: 40px;
+	width: 100px;
+	height: 26px;
+	padding-top: 4px;
 }
 .shadow{
 	border: 1px solid rgba(0, 0, 0, 0);

@@ -57,24 +57,24 @@
 		<div class="congrads common back-color shadow">
 			<h1>Game over</h1>
 			<P>Congradulation</P>
-			<p>Divya own this game</p>
-			<button class="btn exit">Exit</button>
+			<p>You own this game</p>
+			<a class="btn exit" href = "/">Exit</a>
 		</div>
 		<div class="sorry common back-color shadow">
 			<h1>Game over</h1>
-			<P>Sorry Hari lost this game ! </P>
+			<P id="sorry_name"></P>
 			<p>Better luck next time</p>
-			<button class="btn exit">Exit</button>
+			<a class="btn exit" href = "/">Exit</a>
 		</div>
 		<div class="replace common back-color shadow" id="newPown">
 			<div class="pawn-replace">
-				<button class="btn replace1">Queen</button>
-				<button class="btn replace1">Knight</button>
-				<button class="btn replace1">Bishop</button>
-				<button class="btn replace1">Rook</button>
+				<button class="btn replace1" onclick="newpown('queen')">Queen</button>
+				<button class="btn replace1" onclick="newpown('knight')">Knight</button>
+				<button class="btn replace1" onclick="newpown('bishop')">Bishop</button>
+				<button class="btn replace1" onclick="newpown('rook')">Rook</button>
 			</div>
 			<div>
-				<button class="btn cancel-replace">cancel</button>
+				<a class="btn cancel-replace" onclick="newpown('undefined')">cancel</a>
 			</div>
 		</div>
 	</div>

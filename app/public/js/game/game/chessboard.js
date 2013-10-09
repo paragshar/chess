@@ -242,13 +242,15 @@ function dragend(color, x, y, x1, y1, name)
 		document.getElementById('is_it_my_turn').value = 0;
 		document.getElementById('pgrid').value = trgrid;
 	}else if(BK == 1 && WK == 0){
-		alert("congratulations \n you WIN the game")
+		$(".congrads").show();
+		$(".chess,.kineticjs-content").hide();
 		document.getElementById('is_it_my_turn').value = 1;
-		window.location.href = "/home";
+		// window.location.href = "/home";
 	}else if(BK == 0 && WK == 1){
-		alert("congratulations \n you WIN the game")
+		$(".congrads").show();
+		$(".chess,.kineticjs-content").hide();
 		document.getElementById('is_it_my_turn').value = 1;
-		window.location.href = "/home";
+		// window.location.href = "/home";
 	}
 
 	
