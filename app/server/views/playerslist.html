@@ -47,7 +47,7 @@
 												<input type="hidden" name="challengerUserName" value=<%= user.user%>>	
 												<td><%= accts[i].name %></td>
 												<td><%= accts[i].country %></td>
-												<td><%if(accts[i].status == 'undefined' ){%>
+												<td><%if(accts[i].status == undefined ){%>
 													Offline
 												<%}else{ %>
 													<%= accts[i].status %>
