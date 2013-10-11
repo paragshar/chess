@@ -22,24 +22,26 @@
 body{
 	margin: 0px auto;
 	font-family:'FjordOne-Regular';
+	background-color: black;
+
 }
 .wrapper{
 	width: 100%;
-	height: 810px;
+	min-height: 810px;
 	margin: 0 auto;
 	background-image: url('../img/background.jpg');
 	background-repeat: no-repeat;
 	overflow: hidden;
-	background-size: 100% 100%;
+	background-size: 100% auto;
 }
 .wrapper1{
 	width: 100%;
-	height: 810px;
+	min-height: 810px;
 	margin: 0 auto;
 	background-image: url('../img/bg.jpg');
 	background-repeat: no-repeat;
 	overflow: hidden;
-	background-size: 100% 100%;
+	background-size: 100% auto;
 }
 
 a{
@@ -523,7 +525,7 @@ li:hover{
 }
 .pl{
 	width: 645px;
-	height: 500px;
+	min-height: 500px;
 	margin-left: auto;
     margin-right: auto;
     margin-top: 165px;
@@ -539,8 +541,8 @@ li:hover{
 	color: #D29900;
     font-size: 18px;
     width: 100%;
-    height: 85%;
-    overflow-y:auto; 
+    min-height: 450px;
+    /*overflow-y:auto;*/ 
 }
 .pl-text{
 	margin: 0px 10px auto;
@@ -583,11 +585,12 @@ tr:nth-child(even) {
 }
 .ch{
 	width: 750px;
-	height: 500px;
+	min-height: 500px;
 	margin-left: auto;
     margin-right: auto;
     margin-top: 165px;
     overflow: hidden;
+    padding-bottom: 40px;
 }
 .list{
 	margin: 0px;
@@ -761,4 +764,8 @@ tr:nth-child(even) {
 }
 .fn{
 	font-size: 18px;
+}
+.stat{
+	text-align: center;
+	padding-left: 0px;
 }
