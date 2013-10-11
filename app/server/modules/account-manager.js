@@ -239,7 +239,7 @@ exports.getAllAccounts = function(callback)
 			for (var i = 0; i < res.length; i++) {
 				var previousTime = res[i]['laset_heartbeat_req_time'];
 				diff = newtime - previousTime;
-				if (diff >= 2) {
+				if (diff >= 5) {
 					accounts.update(
 					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "offline"} 
 					},function(err,res){
