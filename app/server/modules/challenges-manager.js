@@ -18,6 +18,7 @@ var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}),
 var challenges = db.collection('challenges');
 var games = db.collection('games');
 
+
 exports.addNewChallenge = function(newData, callback)
 {
 	// append date stamp when record was created //
@@ -25,14 +26,25 @@ exports.addNewChallenge = function(newData, callback)
 	return(newData._id);
 };
 
-exports.getAllChallenges = function(callback)
+exports.getAllChallenges = function(username, callback)
 {
 	challenges.find().toArray(
 		function(e, res) {
 			if (e)
 				callback(e)
-			else 
-				callback(null, res);
+			else {
+				var listOfChallenges = new Array();
+				for (var i = 0; i < res.length; i++) {
+					if (res[i]['challanger_user_name'] != username.user) {
+						if (res[i]['challanged_user_name'] == username.user) {
+							if (res[i]['accept'] == 0) {
+								listOfChallenges.push(res[i]);
+							}
+						}
+					};
+				};
+				callback(listOfChallenges);
+			}
 		}
 	);
 };
@@ -61,6 +73,56 @@ exports.check_if_challenge_accepted = function(challengeId, callback)
 		    }else{
 		    	callback('no');
 		    }
+		}
+	);
+}
+
+
+exports.updateView = function(username, callback){
+	challenges.find().toArray(
+		function(e, res) {
+			if (e)
+				callback(e)
+			else {
+				for (var i = 0; i < res.length; i++) {
+					if (res[i]['challanger_user_name'] != username.user) {
+						if (res[i]['challanged_user_name'] == username.user) {
+							if (res[i]['accept'] == 0) {
+								challenges.update({'_id' : res[i]['_id']}, { $set: { 'view' : 1 } } ,
+							    function(err,res){
+							        if (err){
+							            callback(err);
+							        }
+							    });
+							}
+						}
+					};
+				};
+			}
+		}
+	);
+}
+
+exports.newChallenge = function(username, callback){
+	challenges.find().toArray(
+		function(e, res) {
+			if (e)
+				callback(e)
+			else {
+				var noOfNewChallenges = 0;
+				for (var i = 0; i < res.length; i++) {
+					if (res[i]['challanger_user_name'] != username.user) {
+						if (res[i]['challanged_user_name'] == username.user) {
+							if (res[i]['accept'] == 0) {
+								if (res[i]['view'] == 0) {
+									noOfNewChallenges += 1
+								}
+							}
+						}
+					};
+				};
+				callback(noOfNewChallenges);
+			}
 		}
 	);
 }

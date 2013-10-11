@@ -57,6 +57,24 @@ module.exports = function(app) {
 				udata : req.session.user
 			});
 	    }
+	    AM.updateStatusToOnline({
+	    	user 	: req.session.user.user
+	    })
+	});
+
+	app.get('/hearbeat', function(req, res){
+		var noofnewChallenge = 0;
+		if (req.session.user != null){
+			AM.updateHeartbeat({
+				user 	: req.session.user.user
+			});
+
+			CM.newChallenge({
+				user 	: req.session.user.user
+			}, function(newChallenge){
+				res.send({"noOfNewChallenge":newChallenge});
+			})
+		}
 	});
 	
 	app.post('/home', function(req, res){
@@ -80,11 +98,15 @@ module.exports = function(app) {
 					res.send('ok', 200);
 				}
 			});
-		}	else if (req.param('logout') == 'true'){
+		}else if (req.param('logout') == 'true'){
+			AM.updateStatusToOffline({
+				user 	: req.session.user.user
+			})
 			res.clearCookie('user');
 			res.clearCookie('pass');
 			req.session.destroy(function(e){ res.send('ok', 200); });
 		}
+		
 	});
 	
 // creating new accounts //
@@ -94,12 +116,17 @@ module.exports = function(app) {
 	});
 	
 	app.post('/signup', function(req, res){
+		var currentdate = new Date()
+		var newtime = currentdate.getTime();
+		newtime = ~~((newtime / 1000)/60);
 		AM.addNewAccount({
 			name 	: req.param('name'),
 			email 	: req.param('email'),
 			user 	: req.param('user'),
 			pass	: req.param('pass'),
-			country : req.param('country')
+			country : req.param('country'),
+			status 	: "offline",
+			laset_heartbeat_req_time : newtime,
 		}, function(e){
 			if (e){
 				res.send(e, 400);
@@ -121,9 +148,10 @@ module.exports = function(app) {
 			accept				: 0,
 			challanged_user_name: req.body.challengedUserName,
 			challanger_user_name: req.body.challengerUserName,
-			date_and_time		: currentdate
+			date_and_time		: currentdate,
+			view 				: 0
 		},function(){
-				res.render('waiting',{'challenge_id':challengeId});
+			res.render('waiting',{'challenge_id':challengeId});
 		});
 	});
 
@@ -162,9 +190,15 @@ module.exports = function(app) {
 		})
 	})
 	app.get('/challenges', function(req, res){
-		CM.getAllChallenges( function(e, challengers){
-			res.render('challengers.html', { title : 'Challengers List', challenge : challengers, user: req.session.user});
+		CM.getAllChallenges({
+			user : req.session.user.name
+		}, function(challenges){
+			res.render('challengers.html', { title : 'Challengers List', challenge : challenges, user: req.session.user});
 		})
+
+		CM.updateView ({
+	    	user 	: req.session.user.user
+	    })
 	});
 
 // for accepte list
@@ -193,7 +227,6 @@ module.exports = function(app) {
 		})
 	});
 
-//game players list
 	app.get('/playlist', function(req, res){
 		GM.getAllGames( function(e, games){
 			res.render('playlist', { title : 'Play List', game : games});
@@ -236,6 +269,13 @@ module.exports = function(app) {
 				req.session.reset = { email:email, passHash:passH };
 				res.render('reset', { title : 'Reset Password' });
 			}
+		})
+	});
+
+	app.get('/checkOnline', function(req, res) {
+		AM.getAllAccounts(function(e, accounts){
+		}, function(){
+			res.send("ok")
 		})
 	});
 	
@@ -309,7 +349,6 @@ module.exports = function(app) {
 	    		}
 	    	}
 	    });
-	    
 	});
 
 	app.post('/move', function(req, res) {
@@ -349,4 +388,5 @@ module.exports = function(app) {
 	});
 	
 	app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
+
 };

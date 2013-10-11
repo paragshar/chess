@@ -193,3 +193,74 @@ var findByMultipleFields = function(a, callback)
 		else callback(null, results)
 	});
 }
+
+exports.updateStatusToOnline = function(user, callback){
+	accounts.update(
+	 	{ 'user': user['user'] }, { $set: { status :"online" } } ,
+    function(err,res){
+        if (err){
+            callback(err);
+        }
+    });
+	
+}
+
+exports.updateStatusToOffline = function(user, callback){
+	accounts.update(
+	 	{ 'user': user['user'] }, { $set: { status :"offline" } } ,
+    function(err,res){
+        if (err){
+            callback(err);
+        }
+    });
+}
+
+exports.updateHeartbeat = function(user, callback){
+	var currentdate = new Date()
+		var newtime = currentdate.getTime();
+		newtime = ~~((newtime / 1000)/60);
+	accounts.update(
+	 	{ 'user': user['user'] }, { $set: { 'laset_heartbeat_req_time' :  newtime} 
+	},function(err,res){
+        if (err){
+            callback(err);
+        }
+    });
+}
+
+exports.getAllAccounts = function(callback)
+{
+	var currentdate = new Date()
+		var newtime = currentdate.getTime();
+		newtime = ~~((newtime / 1000)/60);
+
+	accounts.find().toArray(
+		function(e, res) {
+			for (var i = 0; i < res.length; i++) {
+				var previousTime = res[i]['laset_heartbeat_req_time'];
+				diff = newtime - previousTime;
+				if (diff >= 2) {
+					accounts.update(
+					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "offline"} 
+					},function(err,res){
+				        if (err){
+				            callback(err);
+				        }else{
+				        	callback("ok")
+				        }
+				    });
+				}else{
+					accounts.update(
+					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "online"} 
+					},function(err,res){
+				        if (err){
+				            callback(err);
+				        }else{
+				        	callback("ok")
+				        }
+				    });
+				}
+			};
+		}
+	);
+};

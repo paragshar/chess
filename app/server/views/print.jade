@@ -9,12 +9,18 @@ block content
 					th(style='width:180px') Name
 					th(style='width:200px') Location
 					th(style='width:180px') Username
+					th(style='width:180px') Email id
 					th Account Created
+					th Status
+					th laset_heartbeat_req_time
 			tbody
 			- for (var i = 0; i < accts.length; i++)
 				tr
 					td= i+1
 					td= accts[i].name
 					td= accts[i].country
+					td= accts[i].email
 					td= accts[i].user
 					td= accts[i].date
+					td= accts[i].status
+					td= accts[i].laset_heartbeat_req_time
