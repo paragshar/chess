@@ -12,7 +12,7 @@ block content
 					th(style='width:180px') Email id
 					th Account Created
 					th Status
-					th laset_heartbeat_req_time
+					th last_heartbeat_req_time
 			tbody
 			- for (var i = 0; i < accts.length; i++)
 				tr
@@ -23,4 +23,4 @@ block content
 					td= accts[i].user
 					td= accts[i].date
 					td= accts[i].status
-					td= accts[i].laset_heartbeat_req_time
+					td= accts[i].last_heartbeat_req_time

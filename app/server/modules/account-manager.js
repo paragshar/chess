@@ -196,7 +196,7 @@ var findByMultipleFields = function(a, callback)
 
 exports.updateStatusToOnline = function(user, callback){
 	accounts.update(
-	 	{ 'user': user['user'] }, { $set: { status :"online" } } ,
+	 	{ 'user': user['user'] }, { $set: { status :"Online" } } ,
     function(err,res){
         if (err){
             callback(err);
@@ -207,7 +207,7 @@ exports.updateStatusToOnline = function(user, callback){
 
 exports.updateStatusToOffline = function(user, callback){
 	accounts.update(
-	 	{ 'user': user['user'] }, { $set: { status :"offline" } } ,
+	 	{ 'user': user['user'] }, { $set: { status :"Offline" } } ,
     function(err,res){
         if (err){
             callback(err);
@@ -220,7 +220,7 @@ exports.updateHeartbeat = function(user, callback){
 		var newtime = currentdate.getTime();
 		newtime = ~~((newtime / 1000)/60);
 	accounts.update(
-	 	{ 'user': user['user'] }, { $set: { 'laset_heartbeat_req_time' :  newtime} 
+	 	{ 'user': user['user'] }, { $set: { 'last_heartbeat_req_time' :  newtime} 
 	},function(err,res){
         if (err){
             callback(err);
@@ -237,11 +237,11 @@ exports.getAllAccounts = function(callback)
 	accounts.find().toArray(
 		function(e, res) {
 			for (var i = 0; i < res.length; i++) {
-				var previousTime = res[i]['laset_heartbeat_req_time'];
+				var previousTime = res[i]['last_heartbeat_req_time'];
 				diff = newtime - previousTime;
 				if (diff >= 5) {
 					accounts.update(
-					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "offline"} 
+					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "Offline"} 
 					},function(err,res){
 				        if (err){
 				            callback(err);
@@ -251,7 +251,7 @@ exports.getAllAccounts = function(callback)
 				    });
 				}else{
 					accounts.update(
-					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "online"} 
+					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "Online"} 
 					},function(err,res){
 				        if (err){
 				            callback(err);

@@ -125,8 +125,8 @@ module.exports = function(app) {
 			user 	: req.param('user'),
 			pass	: req.param('pass'),
 			country : req.param('country'),
-			status 	: "offline",
-			laset_heartbeat_req_time : newtime,
+			status 	: "Offline",
+			last_heartbeat_req_time : newtime,
 		}, function(e){
 			if (e){
 				res.send(e, 400);
