@@ -49,11 +49,12 @@
 												<td><%= accts[i].country %></td>
 												<td class="stat"><%if(accts[i].status == undefined ){%>
 													<img src="/img/offline.png">
-												<%}else if(accts[i].status == "online"){ %>
+												<%}else if(accts[i].status == "Online"){ %>
 													<img src="/img/online.png">
-												<% }else if(accts[i].status == "offline"){ %> 
+												<% }else if(accts[i].status == "Offline"){ %> 
 													<img src="/img/offline.png">
 												<% } %>
+												
 
 												</td>
 												<td><button class="btn signin fp-submit" type="submit">challenge</button></td>
