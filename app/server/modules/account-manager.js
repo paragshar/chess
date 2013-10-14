@@ -241,7 +241,7 @@ exports.getAllAccounts = function(callback)
 				diff = newtime - previousTime;
 				console.log(i);
 				console.log(diff);
-				if (diff >= 5 || diff <= -2) {
+				if (diff >= 5) {
 					accounts.update(
 					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "Offline"} 
 					},function(err,res){
