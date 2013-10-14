@@ -251,16 +251,6 @@ exports.getAllAccounts = function(callback)
 				        	callback("ok")
 				        }
 				    });
-				}else{
-					accounts.update(
-					 	{ 'user': res[i]['user'] }, { $set: { 'status' :  "Online"} 
-					},function(err,res){
-				        if (err){
-				            callback(err);
-				        }else{
-				        	callback("ok")
-				        }
-				    });
 				}
 			};
 		}
