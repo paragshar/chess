@@ -2,5 +2,5 @@ $(document).ready(function(){
 	function check(){
 		location.reload();
 	}
-	setInterval(check, 10000);
+	setInterval(check, 15000);
 });

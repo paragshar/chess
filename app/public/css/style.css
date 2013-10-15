@@ -86,7 +86,7 @@ a{
 .join{
 	display: inline-block;
     height: 24px;
-    margin-left: 560px;
+    margin-left: 42%;
     padding-top: 6px;
     vertical-align: middle;
     width: 130px;
@@ -451,6 +451,9 @@ option{
   padding:10px 10px;
   font-size:24px;
 }
+.ne-inner img{
+	margin-left: 20px;
+}
 .ne-inner1{
 	padding-top: 9px;
 }
@@ -689,11 +692,11 @@ tr:nth-child(even) {
 	font-size: 26px;
 }
 
-.kineticjs-content{
+/*.kineticjs-content{
 	top: -616px;
 	left: 138px;
 
-}
+}*/
 .common{
 	color: #D29900;
     height: 300px;
@@ -768,4 +771,19 @@ tr:nth-child(even) {
 .stat{
 	text-align: center;
 	padding-left: 0px;
+}
+footer{
+
+}
+#footer{
+	color: white;
+	text-align: center;
+}
+#canvas{
+	position: absolute;
+	top: 140px;
+	left: 138px;
+}
+.footer-posi{
+	margin-top: -52px !important;
 }
