@@ -22,7 +22,7 @@
 body{
 	margin: 0px auto;
 	font-family:'FjordOne-Regular';
-	background-color: black;
+	background-color: black !important;
 
 }
 .wrapper{
