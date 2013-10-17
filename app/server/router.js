@@ -166,18 +166,20 @@ module.exports = function(app) {
 		var userId = req.session.user._id;
 		var turn1 = 'no';
 		GM.find_turn({gameId: req.session.gameId,
-					userid : userId
+				userid : userId
 			}, function(turn){
 				turn1 = turn;
 		})
 		GM.getAllMoves({
 			gameId : req.session.gameId
 		}, function(moves_info){
+			console.log(moves_info);
 			newData = {
 			    "moves":moves_info,
 			    "turn":turn1,
 			    "user_name": req.session.user.name 
 			}
+			// console.log(newData);
 			res.send(newData);
 		})
 	});

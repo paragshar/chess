@@ -1,5 +1,5 @@
 $(document).on('ready', function(){
-	setInterval(isItMyTurn, 1000);
+	setInterval(isItMyTurn, 2000);
 });
 
 function isItMyTurn(){
