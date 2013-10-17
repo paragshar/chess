@@ -164,7 +164,7 @@ module.exports = function(app) {
 
 	app.get('/is_it_my_turn', function(req, res){
 		var userId = req.session.user._id;
-		var turn1 = "";
+		var turn1 = 'no';
 		GM.find_turn({gameId: req.session.gameId,
 					userid : userId
 			}, function(turn){

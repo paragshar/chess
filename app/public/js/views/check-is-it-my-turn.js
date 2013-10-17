@@ -8,7 +8,7 @@ function isItMyTurn(){
 		$.get(url, function(newData){
 			// document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
 			// document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
-			if (newData.turn != 'no' ) {
+			if (newData.turn != 'no') {
 				var data = newData.turn;
 				if (data[0] != null ) {
 					// alert("calling123")
