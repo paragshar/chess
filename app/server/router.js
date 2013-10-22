@@ -57,9 +57,13 @@ module.exports = function(app) {
 				udata : req.session.user
 			});
 	    }
-	    AM.updateStatusToOnline({
-	    	user 	: req.session.user.user
-	    })
+	    if (req.session.user == null){
+	    	res.redirect('/');
+	    }   else{
+		    AM.updateStatusToOnline({
+		    	user 	: req.session.user.user
+		    })
+		}
 	});
 
 	app.get('/hearbeat', function(req, res){
@@ -192,15 +196,19 @@ module.exports = function(app) {
 		})
 	})
 	app.get('/challenges', function(req, res){
-		CM.getAllChallenges({
-			user : req.session.user.name
-		}, function(challenges){
-			res.render('challengers.html', { title : 'Challengers List', challenge : challenges, user: req.session.user});
-		})
+		if (req.session.user != null){
+			CM.getAllChallenges({
+				user : req.session.user.name
+			}, function(challenges){
+				res.render('challengers.html', { title : 'Challengers List', challenge : challenges, user: req.session.user});
+			})
 
-		CM.updateView ({
-	    	user 	: req.session.user.user
-	    })
+			CM.updateView ({
+		    	user 	: req.session.user.user
+		    })
+		}else{
+			res.redirect("/");
+		}
 	});
 
 // for accepte list
@@ -328,9 +336,13 @@ module.exports = function(app) {
 	});
 	
 	app.get('/playerslist', function(req, res) {
-	    AM.getAllRecords( function(e, accounts){
-			res.render('playerslist.html', { title : 'Players List', accts : accounts , user: req.session.user});
-		})
+		if (req.session.user != null) {
+		    AM.getAllRecords( function(e, accounts){
+				res.render('playerslist.html', { title : 'Players List', accts : accounts , user: req.session.user});
+			})
+		}else{
+			res.redirect('/');	
+		}
 	});
 
 	app.get('/play', function(req, res) {
