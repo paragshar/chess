@@ -1,6 +1,3 @@
-// $(document).on('ready', function(){
-// 	setInterval(isItMyTurn, 2000);
-// });
 var data, gameId, temp =0;
 
 var myDataRef = new Firebase('https://battlechess.firebaseio.com/'+$("#gameId").val());
@@ -100,9 +97,7 @@ function isItMyTurn(){
 	// }
 }
 
-isItMyTurn();
 function updatefb (color) {
-	isItMyTurn();
 	myDataRef.set(color)
 }
 
