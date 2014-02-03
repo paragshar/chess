@@ -21,7 +21,8 @@
 		"mongodb": "1.2.7",
 		"moment" : "1.7.2",
 		"emailjs": "0.3.3",
-		"ejs" : "0.7.2"
+		"ejs" : "0.7.2",
+		"firebase": ""
 	},
 	"engines": {
 		"node": "0.8.14",

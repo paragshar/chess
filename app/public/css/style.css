@@ -43,7 +43,9 @@ body{
 	overflow: hidden;
 	background-size: 100% auto;
 }
-
+.hide{
+	display: none;
+}
 a{
 	text-decoration: none;
 	color: #d29900;
@@ -700,11 +702,12 @@ tr:nth-child(even) {
 .common{
 	color: #D29900;
     height: 300px;
-    margin-left: 480px;
-    margin-right: auto;
-    top:290px;
+    left: 0;
+    margin: 0 auto;
     position: absolute;
+    right: 0;
     text-align: center;
+    top: 290px;
     width: 500px;
 }
 .common h1{

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<div class="wrapper1" >
+		<input type="hidden" id="gameId" value= <%=gameId%>>
 		<input type="hidden" id="is_it_my_turn" value= 0>
 		<input type="hidden" id="pgrid" value= 0>
 		<div class="play-inner">
@@ -82,6 +83,7 @@
 	<div id="footer" class="footer-posi">
         
     </div>
+    <script src="/vendor/firebase.js"></script>
 	<script src="/vendor/jquery.min.js"></script>
 	<script src="/vendor/jquery.form.js"></script>
 	<script src="/js/views/check-is-it-my-turn.js"></script>
@@ -96,7 +98,6 @@
 	<script src="/vendor/jquery-ui.js"></script>
 	<script src="/js/game/lib/kinetic.js"></script>
 	<script src="/vendor/custom.js"></script>
-	<script src='/js/views/heartbeat.js'></script>
 	<script src='/js/views/footer.js'></script>
 </body>
 </html>	

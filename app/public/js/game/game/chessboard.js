@@ -237,7 +237,8 @@ function dragend(color, x, y, x1, y1, name)
 	xmlhttp.open("post","/move?moved_pawn_color=" + color + "&x=" + x + "&y=" + y +"&x1=" + x1 +"&y1=" +y1 + "&moved_coin=" + name,true);
 	var trgrid = getTransformedGrid();
 	xmlhttp.send(trgrid);
-
+	updatefb(color)
+	isItMyTurn()
 	if (BK == 0 && WK == 0) {
 		document.getElementById('is_it_my_turn').value = 0;
 		document.getElementById('pgrid').value = trgrid;

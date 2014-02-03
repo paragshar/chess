@@ -6,11 +6,14 @@ var GM = require('./modules/game-manager');
 var challengeId;
 var request = require("request");
 
-module.exports = function(app) {
 
-// main login page //
+module.exports = function(app) {
+	// main login page //
 	app.set('views', __dirname + '/views');
 	app.engine('html', require('ejs').renderFile);
+
+	
+
 
 	app.get('/', function(req, res){
 	// check if the user's credentials are saved in a cookie //
@@ -36,8 +39,8 @@ module.exports = function(app) {
 			}else{
 			    req.session.user = o;
 				if (req.param('remember-me') == 'true'){
-					res.cookie('user', o.user, { maxAge: 900000 });
-					res.cookie('pass', o.pass, { maxAge: 900000 });
+					res.cookie('user', o.user, { maxAge: 6.048e+8 });
+					res.cookie('pass', o.pass, { maxAge: 6.048e+8 });
 				}
 				res.send(o, 200);
 			}
@@ -145,7 +148,6 @@ module.exports = function(app) {
 		var month = currentdate.getMonth() + 1
 		currentdate = currentdate.getDate() + "/"+month + "/" + currentdate.getFullYear() +" "+
 					+ currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-		// console.log(currentdate);
 		challengeId = CM.addNewChallenge({
 			challanged_user_id 	: req.body.challengedUserId,
 			challanger_user_id 	: req.body.challengerUserId,
@@ -177,13 +179,11 @@ module.exports = function(app) {
 		GM.getAllMoves({
 			gameId : req.session.gameId
 		}, function(moves_info){
-			console.log(moves_info);
 			newData = {
 			    "moves":moves_info,
 			    "turn":turn1,
 			    "user_name": req.session.user.name 
 			}
-			// console.log(newData);
 			res.send(newData);
 		})
 	});
@@ -354,11 +354,13 @@ module.exports = function(app) {
 	    			res.render('play.html', {
 	        			title: 'Play',
 	        			is_it_my_turn:1,
+	        			gameId : game_id
 	    			});
 	    		}else{
 	    			res.render('play.html', {
 	        			title: 'Play',
 	        			is_it_my_turn:0,
+	        			gameId : game_id
 	    			});
 	    		}
 	    	}

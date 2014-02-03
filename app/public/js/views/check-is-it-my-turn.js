@@ -1,36 +1,39 @@
-$(document).on('ready', function(){
-	setInterval(isItMyTurn, 2000);
-});
+// $(document).on('ready', function(){
+// 	setInterval(isItMyTurn, 2000);
+// });
+var data, gameId, temp =0;
+
+var myDataRef = new Firebase('https://battlechess.firebaseio.com/'+$("#gameId").val());
 
 function isItMyTurn(){
-	if($('#is_it_my_turn').val() == 0){
+	// if($('#is_it_my_turn').val() == 0){
 		var url = '/is_it_my_turn';
 		$.get(url, function(newData){
-			// document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
-			// document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
 			if (newData.turn != 'no') {
 				var data = newData.turn;
 				if (data[0] != null ) {
-					// alert("calling123")
 					document.getElementById('is_it_my_turn').value = 1;
 					document.getElementById('player1').innerHTML=newData.turn[0]['player1'];
 					document.getElementById('player2').innerHTML=newData.turn[0]['player2'];
 					WK = 0;
 					BK = 0;
-					// animation(data[0]["x"], data[0]["y"], data[0]["x1"], data[0]["y1"], data[0]["last_move_color"])
 					var tmpGrid = new Array();
-					for (var i = 0; i < 8; i++) {
-						tmpGrid[i] = new Array();
-						for (var j = 0; j < 8; j++) {
-							if (data[0]["grid"][i][j] != null) {
-								elmObj = createGameObject(data[0]["grid"][i][j]);
-								tmpGrid[i][j] = elmObj;
+					// if (data[0]["grid"] != 0) {
+						for (var i = 0; i < 8; i++) {
+							tmpGrid[i] = new Array();
+							for (var j = 0; j < 8; j++) {
+								if (data[0]["grid"][i][j] != null) {
+									elmObj = createGameObject(data[0]["grid"][i][j]);
+									tmpGrid[i][j] = elmObj;
+								}
 							}
 						}
-					}
+					// }
 					hideEle(data[0]["x"], data[0]["y"], data[0]["x1"], data[0]["y1"], data[0]["moved_coin"], data[0]["last_move_color"]);
-					Grid = tmpGrid;
-					// console.log(data[0]["last_move_color"]);
+					if (tmpGrid.length != 0) {
+						Grid = tmpGrid;
+					};
+					
 					
 					if (WK == 1 && BK == 1) {
 						newGrid = document.getElementById(tmpGrid);
@@ -45,7 +48,6 @@ function isItMyTurn(){
 							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player2'] +" lost this game !"
 							$(".sorry").show();
 							$(".chess,.kineticjs-content").hide();
-						// window.location.href = "/home";
 						} else{
 							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player1'] +" lost this game !"
 							$(".sorry").show();
@@ -57,7 +59,6 @@ function isItMyTurn(){
 							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player2'] +" lost this game !"
 							$(".sorry").show();
 							$(".chess").hide();
-						// window.location.href = "/home";
 						} else{
 							document.getElementById('sorry_name').innerHTML = "Sorry " + newData.turn[0]['player1'] +" lost this game !"
 							$(".sorry").show();
@@ -95,5 +96,16 @@ function isItMyTurn(){
 			}
 
 		});
-	}
+
+	// }
 }
+
+isItMyTurn();
+function updatefb (color) {
+	isItMyTurn();
+	myDataRef.set(color)
+}
+
+myDataRef.on('value', function (dataSnapshot) {
+	isItMyTurn()
+})
